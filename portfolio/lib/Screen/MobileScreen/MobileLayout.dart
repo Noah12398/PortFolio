@@ -4,6 +4,7 @@ import 'package:portfolio/Screen/Widgets/Count_Container_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Myservice_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Rotating_image_widget.dart';
+import 'package:portfolio/Screen/Widgets/Tab_Widget.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/styles.dart';
 
@@ -112,7 +113,15 @@ class _MobileLayoutState extends State<MobileLayout> {
                   height: size.width * 0.09,
                 ),
                 
-                MyServicesWidget(size: size)
+                MyServicesWidget(size: size),
+                Container(
+                color: AppColors.ebony,
+                padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                child: SizedBox(
+                  height: 400,
+                  child: CustomTab( size: size),
+                ),
+              ),
               ],
             ),
           ),

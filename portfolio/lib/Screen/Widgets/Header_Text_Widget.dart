@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/Screen/Widgets/Download_CV.dart';
 import 'package:portfolio/Screen/Widgets/Social_widget.dart';
@@ -25,7 +24,7 @@ class HeaderTextWidget extends StatelessWidget {
           Container(
               child: TextWidget(
             sSize: size,
-            text: "I am Jobin",
+            text: "I am Noah",
             color: Colors.white,
             size: 26,
             fw: FontWeight.bold,
