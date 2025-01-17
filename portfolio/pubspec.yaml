@@ -41,6 +41,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  pdfx: ^2.7.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -68,6 +69,13 @@ flutter:
     - assets/images/Flutter.jpg
     - assets/images/Java.jpg
     - assets/images/C.jpg
+    - assets/images/Cybersecurity.pdf
+    - assets/images/FullStack.pdf
+    - assets/images/Backend.pdf
+    - assets/images/Translator.png
+    - assets/images/Recipemaker.png
+    - assets/images/Cargame.png
+    - assets/images/Legal_AI.png
     - assets/fonts/
 
   # An image asset can refer to one or more resolution-specific "variants", see

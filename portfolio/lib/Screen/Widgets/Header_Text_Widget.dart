@@ -24,7 +24,7 @@ class HeaderTextWidget extends StatelessWidget {
           Container(
               child: TextWidget(
             sSize: size,
-            text: "I am Noah",
+            text: "I am Noah John Puthayathu",
             color: Colors.white,
             size: 26,
             fw: FontWeight.bold,
@@ -34,7 +34,7 @@ class HeaderTextWidget extends StatelessWidget {
             size: size,
             alignment: TextAlign.center,
             text1: "Flutter Developer",
-            text2: "UX Designer",
+            text2: "Frontend Developer",
           ),
           SizedBox(
             width: size.width * 0.5,

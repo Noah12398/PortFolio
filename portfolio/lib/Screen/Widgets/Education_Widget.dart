@@ -28,14 +28,12 @@ class EducationTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Gradient Text for the title
         GradientText(
           'Education',
           colors: [AppColors.valhalla, AppColors.capeCod],
           style: TextStyle(
               fontSize: size.width * 0.04, fontWeight: FontWeight.bold),
         ),
-        // ListView.builder for displaying education items
         Expanded(
           child: ListView.builder(
             itemCount: educationList.length, // Use the length of the data list

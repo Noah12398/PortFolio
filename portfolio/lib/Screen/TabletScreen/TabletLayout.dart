@@ -3,11 +3,12 @@ import 'package:portfolio/Screen/Widgets/Count_Container_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Download_CV.dart';
 import 'package:portfolio/Screen/Widgets/Education_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
-import 'package:portfolio/Screen/Widgets/Myservice_Widget.dart';
+import 'package:portfolio/Screen/Widgets/About_Widget.dart';
+import 'package:portfolio/Screen/Widgets/Project_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Rotating_image_widget.dart';
 import 'package:portfolio/Screen/Widgets/Skills_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Social_widget.dart';
-import 'package:portfolio/Screen/Widgets/Tab_Widget.dart';
+import 'package:portfolio/Screen/Widgets/Certificate_Widget.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/styles.dart';
 
@@ -47,7 +48,9 @@ class _TabletLayoutState extends State<TabletLayout> {
                             children: [RotatingImageContainer()],
                           ),
                         ),
-                        SizedBox(height: size.width*0.09,),
+                        SizedBox(
+                          height: size.width * 0.09,
+                        ),
                         Row(
                           children: [
                             HeaderTextWidget(
@@ -61,7 +64,6 @@ class _TabletLayoutState extends State<TabletLayout> {
                         Social_Tab(size: size)
                       ],
                     ),
-
                   ],
                 ),
                 SizedBox(
@@ -69,68 +71,103 @@ class _TabletLayoutState extends State<TabletLayout> {
                 ),
                 Container(
                   width: size.width,
-
-                  margin: EdgeInsets.symmetric(horizontal: size.width*0.05),
+                  margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CountWidget(size: size,text1: "14",text2: "Years of",text3: "Experience",),
-                      const SizedBox(height: 20,),
+                      CountWidget(
+                        size: size,
+                        text1: "14",
+                        text2: "Years of",
+                        text3: "Experience",
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Divider(
                         color: AppColors.paleSlate,
-                        indent: size.width*0.05,
-                        endIndent: size.width*0.05,
-
+                        indent: size.width * 0.05,
+                        endIndent: size.width * 0.05,
                       ),
-
-                      const SizedBox(height: 20,),
-                      CountWidget(size: size,text1: "50+",text2: "Projects",text3: "Completed",),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CountWidget(
+                        size: size,
+                        text1: "50+",
+                        text2: "Projects",
+                        text3: "Completed",
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Divider(
                         color: AppColors.paleSlate,
-                        indent: size.width*0.05,
-                        endIndent: size.width*0.05,
-
+                        indent: size.width * 0.05,
+                        endIndent: size.width * 0.05,
                       ),
-
-                      const SizedBox(height: 20,),
-                      CountWidget(size: size,text1: "1.5K",text2: "Happy",text3: "Customers",),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CountWidget(
+                        size: size,
+                        text1: "1.5K",
+                        text2: "Happy",
+                        text3: "Customers",
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       Divider(
                         color: AppColors.paleSlate,
-                        indent: size.width*0.05,
-                        endIndent: size.width*0.05,
-
+                        indent: size.width * 0.05,
+                        endIndent: size.width * 0.05,
                       ),
-
-                      const SizedBox(height: 20,),
-                      CountWidget(size: size,text1: "1M",text2: "Awesome",text3: "Reviews",),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CountWidget(
+                        size: size,
+                        text1: "1M",
+                        text2: "Awesome",
+                        text3: "Reviews",
+                      ),
                     ],
                   ),
                 ),
-
-                MyServicesWidget(size: size),
+                AboutWidget(size: size),
+                Container(
+                  color: AppColors.ebony,
+                  padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                  child: SizedBox(
+                    height: 400,
+                    child: Certificate_Widget(size: size, itemct: 2,),
+                  ),
+                ),
+                Container(
+                  color: AppColors.ebony,
+                  padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                  child: SizedBox(
+                    height: 500,
+                    child: EducationTab(size: size),
+                  ),
+                ),
+                Container(
+                  color: AppColors.ebony,
+                  padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                  child: SizedBox(
+                      height: 600, child: SkillsWidget(size: size, itemct: 3)),
+                ),
                 Container(
                 color: AppColors.ebony,
                 padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                 child: SizedBox(
-                  height: 400,
-                  child: CustomTab( size: size),
-                ),
-              ),
-              Container(
-                color: AppColors.ebony,
-                padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
-                child: SizedBox(
-                  height: 500,
-                  child: EducationTab( size: size),
-                ),
-              ),
-              Container(
-                color: AppColors.ebony,
-                padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
-                child: SizedBox(height: 600, child: SkillsWidget(size: size,itemct:3)),
+                    height: size.height,
+                    child: Project_Widget(
+                      size: size,
+                      itemct: 2,
+                    )),
               ),
               ],
             ),
@@ -152,7 +189,7 @@ class Social_Tab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: size.width ,
+      width: size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -162,8 +199,6 @@ class Social_Tab extends StatelessWidget {
             height: 20,
           ),
           SocialWidget(),
-
-
         ],
       ),
     );
