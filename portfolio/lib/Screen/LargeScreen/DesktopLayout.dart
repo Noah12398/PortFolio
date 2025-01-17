@@ -133,7 +133,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                 child: SizedBox(
                   height: 400,
-                  child: CustomTab( size: size),
+                  child: CustomTab(size: size),
                 ),
               ),
               Container(
@@ -141,10 +141,14 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                 child: SizedBox(
                   height: 500,
-                  child: EducationTab( size: size),
+                  child: EducationTab(size: size),
                 ),
               ),
-              SkillsWidget(size: size)
+              Container(
+                color: AppColors.ebony,
+                padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                child: SizedBox(height: 600, child: SkillsWidget(size: size,itemct:3)),
+              ),
             ],
           ),
         ),

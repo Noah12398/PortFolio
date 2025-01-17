@@ -5,6 +5,7 @@ import 'package:portfolio/Screen/Widgets/Education_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Myservice_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Rotating_image_widget.dart';
+import 'package:portfolio/Screen/Widgets/Skills_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Tab_Widget.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/styles.dart';
@@ -130,6 +131,11 @@ class _MobileLayoutState extends State<MobileLayout> {
                   height: 500,
                   child: EducationTab( size: size),
                 ),
+              ),
+              Container(
+                color: AppColors.ebony,
+                padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                child: SizedBox(height: 600, child: SkillsWidget(size: size,itemct: 2)),
               ),
               ],
             ),

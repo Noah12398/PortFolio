@@ -65,6 +65,9 @@ flutter:
     - assets/images/HTML.jpg
     - assets/images/CSS.jpg
     - assets/images/Python.jpg
+    - assets/images/Flutter.jpg
+    - assets/images/Java.jpg
+    - assets/images/C.jpg
     - assets/fonts/
 
   # An image asset can refer to one or more resolution-specific "variants", see
