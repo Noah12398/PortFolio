@@ -60,6 +60,11 @@ flutter:
 
   assets:
     - assets/images/ProfilePhoto.jpg
+    - assets/images/TKM.jpg
+    - assets/images/Vim.jpg
+    - assets/images/HTML.jpg
+    - assets/images/CSS.jpg
+    - assets/images/Python.jpg
     - assets/fonts/
 
   # An image asset can refer to one or more resolution-specific "variants", see

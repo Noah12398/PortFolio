@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color paleSlate = Color(0xFFccbdc5);
   static const Color ebony = Color(0xFF0a0612);
-  static const Color studio = Color.fromARGB(255, 196, 239, 68);
+  static const Color studio = Color.fromARGB(255, 51, 237, 181);
   static const Color valhalla = Color(0xFF311a5f);
   static const Color donJuan = Color(0xFF634c51);
   static const Color hippieBlue = Color(0xFF6998b6);

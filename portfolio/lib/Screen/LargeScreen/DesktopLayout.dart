@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/Screen/Widgets/Count_Container_Widget.dart';
+import 'package:portfolio/Screen/Widgets/Education_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Myservice_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Rotating_image_widget.dart';
+import 'package:portfolio/Screen/Widgets/Skills_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Tab_Widget.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/styles.dart';
@@ -134,6 +136,15 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                   child: CustomTab( size: size),
                 ),
               ),
+              Container(
+                color: AppColors.ebony,
+                padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                child: SizedBox(
+                  height: 500,
+                  child: EducationTab( size: size),
+                ),
+              ),
+              SkillsWidget(size: size)
             ],
           ),
         ),

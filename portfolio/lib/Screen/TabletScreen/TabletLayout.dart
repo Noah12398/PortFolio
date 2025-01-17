@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Screen/Widgets/Count_Container_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Download_CV.dart';
+import 'package:portfolio/Screen/Widgets/Education_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Myservice_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Rotating_image_widget.dart';
@@ -115,6 +116,14 @@ class _TabletLayoutState extends State<TabletLayout> {
                 child: SizedBox(
                   height: 400,
                   child: CustomTab( size: size),
+                ),
+              ),
+              Container(
+                color: AppColors.ebony,
+                padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                child: SizedBox(
+                  height: 500,
+                  child: EducationTab( size: size),
                 ),
               ),
               ],

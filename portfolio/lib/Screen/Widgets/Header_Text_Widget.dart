@@ -50,7 +50,7 @@ class HeaderTextWidget extends StatelessWidget {
         ],
       ),
     );
-  }
+  } 
 }
 
 class GradientTextWidget extends StatelessWidget {
@@ -78,7 +78,7 @@ class GradientTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GradientText(
       textAlign: size.width < 600 && alignment != null ? alignment : null,
-      "${text1}\n${text2??""}",
+      "$text1\n${text2??""}",
       colors: [
         AppColors.studio,
         AppColors.paleSlate,
