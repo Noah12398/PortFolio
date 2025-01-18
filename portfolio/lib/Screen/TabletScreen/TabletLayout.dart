@@ -136,7 +136,7 @@ class _TabletLayoutState extends State<TabletLayout> {
                     ],
                   ),
                 ),
-                AboutWidget(size: size),
+                // AboutWidget(size: size, scrollController: null,),
                 Container(
                   color: AppColors.ebony,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),

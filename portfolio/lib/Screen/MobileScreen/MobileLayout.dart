@@ -138,7 +138,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                 SizedBox(
                   height: size.width * 0.09,
                 ),
-                AboutWidget(size: size),
+                // AboutWidget(size: size),
                 Container(
                   color: AppColors.ebony,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
