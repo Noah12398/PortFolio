@@ -3,74 +3,84 @@ import 'package:pdfx/pdfx.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
-class Certificate_Widget extends StatelessWidget {
+class CertificateWidget extends StatefulWidget {
   final Size size;
-  final int itemct;
-  Certificate_Widget({super.key, required this.size, required this.itemct});
+  final int itemCt;
 
-  final List<String> CertificateList = [
+  const CertificateWidget({
+    super.key,
+    required this.size,
+    required this.itemCt, required int itemct,
+  });
+
+  @override
+  State<CertificateWidget> createState() => _CertificateWidgetState();
+}
+
+class _CertificateWidgetState extends State<CertificateWidget> {
+  final List<String> certificateList = [
     'assets/images/Cybersecurity.pdf',
     'assets/images/FullStack.pdf',
     'assets/images/Backend.pdf'
   ];
 
+  late List<PdfController> pdfControllers;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize a PdfController for each PDF
+    pdfControllers = certificateList
+        .map((path) => PdfController(document: PdfDocument.openAsset(path)))
+        .toList();
+  }
+
+  @override
+  void dispose() {
+    // Dispose of all PdfControllers
+    for (var controller in pdfControllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
+    return Column(
       children: [
         GradientText(
           'Certificates',
           colors: [AppColors.valhalla, AppColors.capeCod],
           style: TextStyle(
-              fontSize: size.width * 0.04, fontWeight: FontWeight.bold),
+            fontSize: widget.size.width * 0.04,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         Expanded(
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: itemct, // Number of cards per row
-              crossAxisSpacing:
-                  size.width * 0.05, // Spacing between cards horizontally
-              mainAxisSpacing:
-                  size.height * 0.05, // Spacing between cards vertically
+              crossAxisCount: widget.itemCt, // Number of items per row
+              crossAxisSpacing: widget.size.width * 0.05,
+              mainAxisSpacing: widget.size.height * 0.05,
             ),
-            itemCount: CertificateList.length,
+            itemCount: certificateList.length,
             itemBuilder: (context, index) {
-              return Container(
-                width: size.width * 0.4,
-                height: size.height * 0.3, // Adjust height for the card
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(20.0), // Rounded corners
+              return Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: SizedBox(
-                  child: Card(
-                    elevation: 3,
-                    color: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        width: double.infinity, // Take maximum available width
-                        height: double.infinity, // Full height of the container
-                        child: PdfView(
-                          controller: PdfController(
-                            document:
-                                PdfDocument.openAsset(CertificateList[index]),
-                          ),
-                        ),
-                      ),
-                    ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: PdfView(
+                    controller: pdfControllers[index], // Use the persistent controller
                   ),
                 ),
               );
             },
           ),
-        )
+        ),
       ],
-    ));
+    );
   }
 }

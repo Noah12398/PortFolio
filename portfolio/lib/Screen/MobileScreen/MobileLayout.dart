@@ -144,7 +144,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                   child: SizedBox(
                     height: 400,
-                    child: Certificate_Widget(size: size, itemct: 1,),
+                    child: CertificateWidget(size: size, itemct: 1, itemCt: 1,),
                   ),
                 ),
                 Container(

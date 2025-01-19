@@ -142,7 +142,7 @@ class _TabletLayoutState extends State<TabletLayout> {
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                   child: SizedBox(
                     height: 400,
-                    child: Certificate_Widget(size: size, itemct: 2,),
+                    // child: Certificate_Widget(size: size, itemct: 2,),
                   ),
                 ),
                 Container(
