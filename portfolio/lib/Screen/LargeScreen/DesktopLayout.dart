@@ -22,10 +22,16 @@ class DesktopLayout extends StatefulWidget {
 class _DesktopLayoutState extends State<DesktopLayout> {
   bool isAboutVisible = false;
   ScrollController _scrollController = ScrollController();
+  ScrollController _aboutScrollController = ScrollController();
+  ScrollController _certificateScrollController = ScrollController();
+  ScrollController _educationScrollController = ScrollController();
 
   @override
   void dispose() {
     _scrollController.dispose();
+    _aboutScrollController.dispose();
+    _certificateScrollController.dispose();
+    _educationScrollController.dispose();
     super.dispose();
   }
 
@@ -54,7 +60,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
               width: double.infinity,
               decoration: Styles.gradientDecorations,
               child: SingleChildScrollView(
-                controller: _scrollController,
+                controller: _scrollController, // Main scroll controller
                 child: Column(
                   children: [
                     if (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
@@ -136,7 +142,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                       padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child: CertificateWidget(size: size, itemct: 3, itemCt: 3,),
+                        child: CertificateWidget(size: size, itemct: 3, itemCt: 3, ),
                       ),
                     ),
                     Container(
@@ -144,7 +150,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                       padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child: EducationTab(size: size),
+                        child: EducationTab(size: size, scrollController: _scrollController),
                       ),
                     ),
                     Container(

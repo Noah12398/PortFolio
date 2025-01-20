@@ -20,10 +20,10 @@ class _AboutWidgetState extends State<AboutWidget> with TickerProviderStateMixin
   late AnimationController _slideController;
   late Animation<Offset> _slideAnimation;
   bool isVisible = false;
-  bool isScrollingDown = true; // Default to scrolling down
+  bool isScrollingDown = true;
   double lastScrollPosition = 0.0;
-  bool _forceSlideUp = false;  // Track forced upward animation
-  bool _forceSlideDown = false; // Track forced downward animation
+  bool _forceSlideUp = false;
+  bool _forceSlideDown = false;
 
   @override
   void initState() {
@@ -77,7 +77,6 @@ final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
           });
         }
 
-        // If widget becomes visible, slide it into position
         if (isWidgetVisible && !isVisible) {
           setState(() {
             isVisible = true;
@@ -89,7 +88,6 @@ final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
   }
 
   void _updateAnimation() {
-  // Set the animation direction based on scroll direction or forced slide direction
   final beginOffset = _forceSlideUp
       ? const Offset(0.0, -1.0) // Force sliding up when scrolling down
       : (_forceSlideDown
@@ -128,50 +126,54 @@ final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      color: AppColors.cocoaBrown,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ShaderMask(
-            shaderCallback: (bounds) => LinearGradient(
-              colors: [
-                AppColors.valhalla,
-                const Color(0xFF9BA4B5),
-              ],
-            ).createShader(bounds),
-            child: GradientText(
-              "About",
-              colors: [
-                AppColors.studio,
-                AppColors.paleSlate,
-              ],
-              style: TextStyle(
-                fontSize: widget.size.width * 0.030,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: widget.size.height * 0.02,
-          ),
-          SlideTransition(
-            position: _slideAnimation,
-            child: Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: Text(
-                'Hi, I’m a passionate Computer Science student with expertise in Flutter, Kotlin, and Python. I love creating innovative, user-friendly applications and solving real-world problems through technology. My projects range from mobile apps to engaging games, reflecting my creativity and technical skills. I’m always eager to learn and grow while contributing to impactful projects. When I’m not coding, I enjoy exploring new tech. Let’s connect and create something amazing!',
+      color: Colors.transparent,
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(30)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ShaderMask(
+              shaderCallback: (bounds) => LinearGradient(
+                colors: [
+                  AppColors.valhalla,
+                  const Color(0xFF9BA4B5),
+                ],
+              ).createShader(bounds),
+              child: GradientText(
+                "About",
+                colors: [
+                  AppColors.studio,
+                  AppColors.paleSlate,
+                ],
                 style: TextStyle(
-                  fontSize: widget.size.width * 0.015,
+                  fontSize: widget.size.width * 0.030,
                   fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
-                textAlign: TextAlign.justify,
               ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: widget.size.height * 0.02,
+            ),
+            SlideTransition(
+              position: _slideAnimation,
+              child: Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Text(
+                  'Hi, I’m a passionate Computer Science student with expertise in Flutter, Kotlin, and Python. I love creating innovative, user-friendly applications and solving real-world problems through technology. My projects range from mobile apps to engaging games, reflecting my creativity and technical skills. I’m always eager to learn and grow while contributing to impactful projects. When I’m not coding, I enjoy exploring new tech. Let’s connect and create something amazing!',
+                  style: TextStyle(
+                    fontSize: widget.size.width * 0.015,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: const Color.fromARGB(255, 21, 21, 21),
+                  ),
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

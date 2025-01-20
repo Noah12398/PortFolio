@@ -20,6 +20,16 @@ class TabletLayout extends StatefulWidget {
 }
 
 class _TabletLayoutState extends State<TabletLayout> {
+  // ScrollController for controlling scrolling behavior
+  final ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController2 = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose(); // Dispose the controller when the widget is disposed
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,6 +39,7 @@ class _TabletLayoutState extends State<TabletLayout> {
         width: double.infinity,
         decoration: Styles.gradientDecorations,
         child: SingleChildScrollView(
+          controller: _scrollController, // Assign the scroll controller here
           child: Container(
             margin: EdgeInsets.symmetric(vertical: size.height * 0.18),
             child: Column(
@@ -136,21 +147,22 @@ class _TabletLayoutState extends State<TabletLayout> {
                     ],
                   ),
                 ),
-                // AboutWidget(size: size, scrollController: null,),
+                                    AboutWidget(size: size, scrollController: _scrollController),
+
                 Container(
                   color: AppColors.ebony,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                   child: SizedBox(
                     height: 400,
-                    // child: Certificate_Widget(size: size, itemct: 2,),
+                    child: CertificateWidget(size: size, itemct: 2, itemCt: 2,),
                   ),
                 ),
                 Container(
                   color: AppColors.ebony,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                   child: SizedBox(
-                    height: 500,
-                    child: EducationTab(size: size),
+                    height: 550,
+               //     child: EducationTab(size: size,scrollController:_scrollController2),
                   ),
                 ),
                 Container(
@@ -160,15 +172,15 @@ class _TabletLayoutState extends State<TabletLayout> {
                       height: 600, child: SkillsWidget(size: size, itemct: 3)),
                 ),
                 Container(
-                color: AppColors.ebony,
-                padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
-                child: SizedBox(
-                    height: size.height,
-                    child: Project_Widget(
-                      size: size,
-                      itemct: 2,
-                    )),
-              ),
+                  color: AppColors.ebony,
+                  padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                  child: SizedBox(
+                      height: size.height,
+                      child: Project_Widget(
+                        size: size,
+                        itemct: 2,
+                      )),
+                ),
               ],
             ),
           ),

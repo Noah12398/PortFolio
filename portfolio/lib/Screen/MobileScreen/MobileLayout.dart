@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/Screen/TabletScreen/TabletLayout.dart';
 import 'package:portfolio/Screen/Widgets/Count_Container_Widget.dart';
+import 'package:portfolio/Screen/Widgets/Download_CV.dart';
 import 'package:portfolio/Screen/Widgets/Education_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
 import 'package:portfolio/Screen/Widgets/About_Widget.dart';
@@ -8,6 +8,7 @@ import 'package:portfolio/Screen/Widgets/Project_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Rotating_image_widget.dart';
 import 'package:portfolio/Screen/Widgets/Skills_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Certificate_Widget.dart';
+import 'package:portfolio/Screen/Widgets/Social_widget.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/styles.dart';
 
@@ -19,19 +20,32 @@ class MobileLayout extends StatefulWidget {
 }
 
 class _MobileLayoutState extends State<MobileLayout> {
+  // Declare ScrollController
+  ScrollController _scrollController = ScrollController();
+  ScrollController _scrollController2 = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    // Mobile layout adjustments
+    double paddingFactor =
+        size.width * 0.05; // Adjusting padding for mobile screens
+
     return Scaffold(
       body: Container(
         height: double.infinity,
         width: double.infinity,
         decoration: Styles.gradientDecorations,
         child: SingleChildScrollView(
+          controller: _scrollController, // Assign the ScrollController
           child: Container(
-            margin: EdgeInsets.symmetric(vertical: size.height * 0.18),
+            margin: EdgeInsets.symmetric(
+                vertical:
+                    size.height * 0.12), // Reduced vertical margin for mobile
             child: Column(
               children: [
+                // Rotating Image Container
                 Container(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +53,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                   ),
                 ),
                 SizedBox(
-                  height: size.width * 0.09,
+                  height: size.width * 0.06, // Adjusted space after image
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
@@ -66,11 +80,12 @@ class _MobileLayoutState extends State<MobileLayout> {
                   ],
                 ),
                 SizedBox(
-                  height: size.width * 0.09,
+                  height: size.width * 0.06, // Adjusted space between sections
                 ),
+                // Count Widget
                 Container(
                   width: size.width,
-                  margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
+                  margin: EdgeInsets.symmetric(horizontal: paddingFactor),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,8 +101,8 @@ class _MobileLayoutState extends State<MobileLayout> {
                       ),
                       Divider(
                         color: AppColors.paleSlate,
-                        indent: size.width * 0.05,
-                        endIndent: size.width * 0.05,
+                        indent: paddingFactor,
+                        endIndent: paddingFactor,
                       ),
                       const SizedBox(
                         height: 20,
@@ -103,8 +118,8 @@ class _MobileLayoutState extends State<MobileLayout> {
                       ),
                       Divider(
                         color: AppColors.paleSlate,
-                        indent: size.width * 0.05,
-                        endIndent: size.width * 0.05,
+                        indent: paddingFactor,
+                        endIndent: paddingFactor,
                       ),
                       const SizedBox(
                         height: 20,
@@ -120,8 +135,8 @@ class _MobileLayoutState extends State<MobileLayout> {
                       ),
                       Divider(
                         color: AppColors.paleSlate,
-                        indent: size.width * 0.05,
-                        endIndent: size.width * 0.05,
+                        indent: paddingFactor,
+                        endIndent: paddingFactor,
                       ),
                       const SizedBox(
                         height: 20,
@@ -136,45 +151,86 @@ class _MobileLayoutState extends State<MobileLayout> {
                   ),
                 ),
                 SizedBox(
-                  height: size.width * 0.09,
+                  height:
+                      size.width * 0.06, // Adjusted space after count widgets
                 ),
-                // AboutWidget(size: size),
+                AboutWidget(size: size, scrollController: _scrollController),
+
+                // Certificate Widget
                 Container(
                   color: AppColors.ebony,
-                  padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                  padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                   child: SizedBox(
-                    height: 400,
-                    child: CertificateWidget(size: size, itemct: 1, itemCt: 1,),
+                    height: 300, // Adjusted height for mobile view
+                    child: CertificateWidget(size: size, itemct: 1, itemCt: 1),
                   ),
                 ),
+                // Education Tab
                 Container(
                   color: AppColors.ebony,
-                  padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                  padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                   child: SizedBox(
-                    height: 500,
-                    child: EducationTab(size: size),
+                    height: 400, // Adjusted height for mobile view
+                  //  child: EducationTab(size: size,scrollController:_scrollController2),
                   ),
                 ),
+                // Skills Widget
                 Container(
                   color: AppColors.ebony,
-                  padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                  padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                   child: SizedBox(
-                      height: 600, child: SkillsWidget(size: size, itemct: 2)),
+                      height: 500, child: SkillsWidget(size: size, itemct: 2)),
                 ),
+                // Project Widget
                 Container(
-                color: AppColors.ebony,
-                padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
-                child: SizedBox(
+                  color: AppColors.ebony,
+                  padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
+                  child: SizedBox(
                     height: size.height,
                     child: Project_Widget(
                       size: size,
-                      itemct: 1,
-                    )),
-              ),
+                      itemct: 1, // Adjusted for mobile
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    // Always dispose the ScrollController
+    _scrollController.dispose();
+    super.dispose();
+  }
+}
+
+class Social_Tab extends StatelessWidget {
+  const Social_Tab({
+    super.key,
+    required this.size,
+  });
+
+  final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: size.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          DownloadCVButton(),
+          SizedBox(
+            height: 20,
+          ),
+          SocialWidget(),
+        ],
       ),
     );
   }
