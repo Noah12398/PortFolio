@@ -77,6 +77,8 @@ flutter:
     - assets/images/Recipemaker.png
     - assets/images/Cargame.png
     - assets/images/Legal_AI.png
+    - assets/images/Kotlin.png
+    - assets/images/C++.png
     - assets/fonts/
 
   # An image asset can refer to one or more resolution-specific "variants", see

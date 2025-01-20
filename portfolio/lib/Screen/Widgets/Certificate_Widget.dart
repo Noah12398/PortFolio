@@ -65,18 +65,11 @@ class _CertificateWidgetState extends State<CertificateWidget> {
             ),
             itemCount: certificateList.length,
             itemBuilder: (context, index) {
-              return Card(
-                elevation: 3,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: PdfView(
-                    controller: pdfControllers[index], // Use the persistent controller
-                  ),
-                ),
-              );
+              return PdfView(
+        controller: pdfControllers[index], // Use the persistent controller
+        scrollDirection: Axis.vertical, // Make sure it scrolls vertically if necessary
+      );
+
             },
           ),
         ),

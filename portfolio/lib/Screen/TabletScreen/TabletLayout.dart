@@ -22,11 +22,11 @@ class TabletLayout extends StatefulWidget {
 class _TabletLayoutState extends State<TabletLayout> {
   // ScrollController for controlling scrolling behavior
   final ScrollController _scrollController = ScrollController();
-  final ScrollController _scrollController2 = ScrollController();
 
   @override
   void dispose() {
-    _scrollController.dispose(); // Dispose the controller when the widget is disposed
+    _scrollController
+        .dispose(); // Dispose the controller when the widget is disposed
     super.dispose();
   }
 
@@ -80,99 +80,37 @@ class _TabletLayoutState extends State<TabletLayout> {
                 SizedBox(
                   height: 20,
                 ),
+               
+                AboutWidget(size: size, scrollController: _scrollController),
                 Container(
-                  width: size.width,
-                  margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CountWidget(
-                        size: size,
-                        text1: "14",
-                        text2: "Years of",
-                        text3: "Experience",
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Divider(
-                        color: AppColors.paleSlate,
-                        indent: size.width * 0.05,
-                        endIndent: size.width * 0.05,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CountWidget(
-                        size: size,
-                        text1: "50+",
-                        text2: "Projects",
-                        text3: "Completed",
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Divider(
-                        color: AppColors.paleSlate,
-                        indent: size.width * 0.05,
-                        endIndent: size.width * 0.05,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CountWidget(
-                        size: size,
-                        text1: "1.5K",
-                        text2: "Happy",
-                        text3: "Customers",
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Divider(
-                        color: AppColors.paleSlate,
-                        indent: size.width * 0.05,
-                        endIndent: size.width * 0.05,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CountWidget(
-                        size: size,
-                        text1: "1M",
-                        text2: "Awesome",
-                        text3: "Reviews",
-                      ),
-                    ],
-                  ),
-                ),
-                                    AboutWidget(size: size, scrollController: _scrollController),
-
-                Container(
-                  color: AppColors.ebony,
+                  color: Colors.transparent,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                   child: SizedBox(
                     height: 400,
-                    child: CertificateWidget(size: size, itemct: 2, itemCt: 2,),
+                    child: CertificateWidget(
+                      size: size,
+                      itemct: 2,
+                      itemCt: 2,
+                    ),
                   ),
                 ),
                 Container(
-                  color: AppColors.ebony,
+                  color: Colors.transparent,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                   child: SizedBox(
                     height: 550,
-               //     child: EducationTab(size: size,scrollController:_scrollController2),
+                    child: EducationTab(
+                        size: size, scrollController: _scrollController),
                   ),
                 ),
                 Container(
-                  color: AppColors.ebony,
+                  color: Colors.transparent,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                   child: SizedBox(
                       height: 600, child: SkillsWidget(size: size, itemct: 3)),
                 ),
                 Container(
-                  color: AppColors.ebony,
+                  color: Colors.transparent,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                   child: SizedBox(
                       height: size.height,

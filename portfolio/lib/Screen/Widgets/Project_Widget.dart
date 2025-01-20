@@ -42,13 +42,13 @@ class Project_Widget extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(20.0), // Rounded corners
                   ),
                   child: SizedBox(
                     child: Card(
-                      elevation: 3,
+                      elevation: 0,
                       color: Colors.transparent,
+                      
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),

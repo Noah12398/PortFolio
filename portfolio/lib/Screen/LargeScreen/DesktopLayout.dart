@@ -22,16 +22,10 @@ class DesktopLayout extends StatefulWidget {
 class _DesktopLayoutState extends State<DesktopLayout> {
   bool isAboutVisible = false;
   ScrollController _scrollController = ScrollController();
-  ScrollController _aboutScrollController = ScrollController();
-  ScrollController _certificateScrollController = ScrollController();
-  ScrollController _educationScrollController = ScrollController();
 
   @override
   void dispose() {
     _scrollController.dispose();
-    _aboutScrollController.dispose();
-    _certificateScrollController.dispose();
-    _educationScrollController.dispose();
     super.dispose();
   }
 
@@ -63,10 +57,12 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 controller: _scrollController, // Main scroll controller
                 child: Column(
                   children: [
-                    if (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
+                    if (sizingInformation.deviceScreenType ==
+                        DeviceScreenType.desktop)
                       // Desktop layout
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: size.height * 0.2),
+                        margin:
+                            EdgeInsets.symmetric(vertical: size.height * 0.2),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,10 +87,12 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                           ],
                         ),
                       ),
-                    if (sizingInformation.deviceScreenType != DeviceScreenType.desktop)
+                    if (sizingInformation.deviceScreenType !=
+                        DeviceScreenType.desktop)
                       // Mobile or Tablet layout
                       Container(
-                        margin: EdgeInsets.symmetric(vertical: size.height * 0.1),
+                        margin:
+                            EdgeInsets.symmetric(vertical: size.height * 0.1),
                         child: Column(
                           children: [
                             HeaderTextWidget(size: size),
@@ -104,66 +102,46 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                           ],
                         ),
                       ),
+                    
+                    AboutWidget(
+                        size: size, scrollController: _scrollController),
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: size.width * 0.05),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CountWidget(
-                            size: size,
-                            text1: "14",
-                            text2: "Years of",
-                            text3: "Experience",
-                          ),
-                          CountWidget(
-                            size: size,
-                            text1: "50+",
-                            text2: "Projects",
-                            text3: "Completed",
-                          ),
-                          CountWidget(
-                            size: size,
-                            text1: "1.5K",
-                            text2: "Happy",
-                            text3: "Customers",
-                          ),
-                          CountWidget(
-                            size: size,
-                            text1: "1M",
-                            text2: "Awesome",
-                            text3: "Reviews",
-                          ),
-                        ],
-                      ),
-                    ),
-                    AboutWidget(size: size, scrollController: _scrollController),
-                    Container(
-                      color: AppColors.ebony,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      color: Colors.transparent,
+                      margin: EdgeInsets.all(15),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child: CertificateWidget(size: size, itemct: 3, itemCt: 3, ),
+                        child: CertificateWidget(
+                          size: size,
+                          itemct: 3,
+                          itemCt: 3,
+                        ),
                       ),
                     ),
                     Container(
-                      color: AppColors.ebony,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      color: Colors.transparent,
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child: EducationTab(size: size, scrollController: _scrollController),
+                        child: EducationTab(
+                            size: size, scrollController: _scrollController),
                       ),
                     ),
                     Container(
-                      color: AppColors.ebony,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      color: Colors.transparent,
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.03),
                       child: SizedBox(
                         height: size.height,
-                        child: SkillsWidget(size: size, itemct: 3),
+                        child: SkillsWidget(size: size, itemct: 4),
                       ),
                     ),
                     Container(
-                      color: AppColors.ebony,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      color: Colors.transparent,
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
                         child: Project_Widget(

@@ -22,7 +22,6 @@ class MobileLayout extends StatefulWidget {
 class _MobileLayoutState extends State<MobileLayout> {
   // Declare ScrollController
   ScrollController _scrollController = ScrollController();
-  ScrollController _scrollController2 = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -83,73 +82,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                   height: size.width * 0.06, // Adjusted space between sections
                 ),
                 // Count Widget
-                Container(
-                  width: size.width,
-                  margin: EdgeInsets.symmetric(horizontal: paddingFactor),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CountWidget(
-                        size: size,
-                        text1: "14",
-                        text2: "Years of",
-                        text3: "Experience",
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Divider(
-                        color: AppColors.paleSlate,
-                        indent: paddingFactor,
-                        endIndent: paddingFactor,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CountWidget(
-                        size: size,
-                        text1: "50+",
-                        text2: "Projects",
-                        text3: "Completed",
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Divider(
-                        color: AppColors.paleSlate,
-                        indent: paddingFactor,
-                        endIndent: paddingFactor,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CountWidget(
-                        size: size,
-                        text1: "1.5K",
-                        text2: "Happy",
-                        text3: "Customers",
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Divider(
-                        color: AppColors.paleSlate,
-                        indent: paddingFactor,
-                        endIndent: paddingFactor,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CountWidget(
-                        size: size,
-                        text1: "1M",
-                        text2: "Awesome",
-                        text3: "Reviews",
-                      ),
-                    ],
-                  ),
-                ),
+               
                 SizedBox(
                   height:
                       size.width * 0.06, // Adjusted space after count widgets
@@ -158,7 +91,7 @@ class _MobileLayoutState extends State<MobileLayout> {
 
                 // Certificate Widget
                 Container(
-                  color: AppColors.ebony,
+                  color: Colors.transparent,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                   child: SizedBox(
                     height: 300, // Adjusted height for mobile view
@@ -167,23 +100,24 @@ class _MobileLayoutState extends State<MobileLayout> {
                 ),
                 // Education Tab
                 Container(
-                  color: AppColors.ebony,
+                  color: Colors.transparent,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                   child: SizedBox(
                     height: 400, // Adjusted height for mobile view
-                  //  child: EducationTab(size: size,scrollController:_scrollController2),
+                    child: EducationTab(
+                        size: size, scrollController: _scrollController),
                   ),
                 ),
                 // Skills Widget
                 Container(
-                  color: AppColors.ebony,
+                  color: Colors.transparent,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                   child: SizedBox(
                       height: 500, child: SkillsWidget(size: size, itemct: 2)),
                 ),
                 // Project Widget
                 Container(
-                  color: AppColors.ebony,
+                  color: Colors.transparent,
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                   child: SizedBox(
                     height: size.height,

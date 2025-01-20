@@ -8,12 +8,14 @@ class SkillsWidget extends StatelessWidget {
   SkillsWidget({super.key, required this.size, required this.itemct});
 
   final List<Map<String, dynamic>> skillList = [
-    {'imagePath': 'assets/images/HTML.jpg', 'stars': 4,'title':'HTML'},
-    {'imagePath': 'assets/images/CSS.jpg', 'stars': 4,'title':'CSS'},
-    {'imagePath': 'assets/images/Python.jpg', 'stars': 4,'title':'Python'},
-    {'imagePath': 'assets/images/C.jpg', 'stars': 3,'title':'C'},
-    {'imagePath': 'assets/images/Java.jpg', 'stars': 3,'title':'Java'},
-    {'imagePath': 'assets/images/Flutter.jpg', 'stars': 4,'title':'Flutter'},
+    {'imagePath': 'assets/images/HTML.jpg', 'stars': 4, 'title': 'HTML'},
+    {'imagePath': 'assets/images/CSS.jpg', 'stars': 4, 'title': 'CSS'},
+    {'imagePath': 'assets/images/Python.jpg', 'stars': 4, 'title': 'Python'},
+    {'imagePath': 'assets/images/C.jpg', 'stars': 3, 'title': 'C'},
+    {'imagePath': 'assets/images/Java.jpg', 'stars': 3, 'title': 'Java'},
+    {'imagePath': 'assets/images/Flutter.jpg', 'stars': 4, 'title': 'Flutter'},
+    {'imagePath': 'assets/images/Kotlin.png', 'stars': 3, 'title': 'Kotlin'},
+    {'imagePath': 'assets/images/C++.png', 'stars': 3, 'title': 'C++'},
   ];
 
   @override
@@ -67,7 +69,8 @@ class SkillsWidget extends StatelessWidget {
                                 skill['imagePath'],
                                 width: constraints.maxWidth * 0.7,
                                 height: constraints.maxHeight * 0.4,
-                                fit: BoxFit.contain, // Fit image inside container
+                                fit: BoxFit
+                                    .contain, // Fit image inside container
                               ),
                             ),
                             SizedBox(height: 8),
@@ -88,7 +91,8 @@ class SkillsWidget extends StatelessWidget {
                                 (starIndex) => Icon(
                                   starIndex < skill['stars']
                                       ? Icons.star
-                                      : Icons.star_border, // Filled or outlined star
+                                      : Icons
+                                          .star_border, // Filled or outlined star
                                   color: Colors.amber,
                                   size: constraints.maxWidth * 0.1,
                                 ),
