@@ -4,6 +4,7 @@ import 'package:portfolio/Screen/Widgets/Education_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Footer_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
 import 'package:portfolio/Screen/Widgets/About_Widget.dart';
+import 'package:portfolio/Screen/Widgets/Header_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Project_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Rotating_image_widget.dart';
 import 'package:portfolio/Screen/Widgets/Skills_Widget.dart';
@@ -20,9 +21,24 @@ class DesktopLayout extends StatefulWidget {
   State<DesktopLayout> createState() => _DesktopLayoutState();
 }
 
-class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateMixin {
+class _DesktopLayoutState extends State<DesktopLayout>
+    with TickerProviderStateMixin {
   bool isAboutVisible = false;
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey homeKey = GlobalKey();
+  final GlobalKey aboutKey = GlobalKey();
+  final GlobalKey certificateKey = GlobalKey();
+  final GlobalKey educationKey = GlobalKey();
+  final GlobalKey skillsKey = GlobalKey();
+  final GlobalKey projectKey = GlobalKey();
+
+  void _scrollToSection(GlobalKey key) {
+    Scrollable.ensureVisible(
+      key.currentContext!,
+      duration: Duration(milliseconds: 600),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   void dispose() {
@@ -35,6 +51,19 @@ class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateM
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(
+        
+        title: Text('My Portfolio'),
+        backgroundColor: Colors.black.withOpacity(0.8),
+        actions: [Spacer(), 
+          BuildNavButton(title: 'Home', key2: homeKey),Spacer(), 
+          BuildNavButton(title: 'About', key2: aboutKey),Spacer(), 
+          BuildNavButton(title: 'Certificates', key2: certificateKey),Spacer(), 
+          BuildNavButton(title: 'Education', key2: educationKey),Spacer(), 
+          BuildNavButton(title: 'Skills', key2: skillsKey),Spacer(), 
+          BuildNavButton(title: 'Projects', key2: projectKey),Spacer(), 
+        ],
+      ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
           if (notification is ScrollUpdateNotification) {
@@ -51,85 +80,79 @@ class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateM
         child: ResponsiveBuilder(
           builder: (context, sizingInformation) {
             return AnimatedBackground(
-              behaviour: SpaceBehaviour(
-              ),
+              behaviour: SpaceBehaviour(),
               vsync: this,
               child: SingleChildScrollView(
-                controller: _scrollController, // Main scroll controller
+                controller: _scrollController,
                 child: Column(
                   children: [
-                    if (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
-                      // Desktop layout
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: size.height * 0.2),
-                        height: size.height,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                HeaderTextWidget(size: size),
-                                SizedBox(height: 20),
-                                Social_large(size: size),
-                              ],
-                            ),
-                            
-                            Expanded(
-                              child: Container(
-                                child: Column(
-                                  children: [RotatingImageContainer()],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    if (sizingInformation.deviceScreenType != DeviceScreenType.desktop)
-                      // Mobile or Tablet layout
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: size.height * 0.1),
-                        height: size.height,
-                        child: Column(
-                          children: [
-                            HeaderTextWidget(size: size),
-                            SizedBox(height: 20),
-                            Social_large(size: size),
-                            RotatingImageContainer(),
-                          ],
-                        ),
-                      ),
-                    AboutWidget(size: size, scrollController: _scrollController),
                     Container(
+                      key: homeKey,
+                      margin: EdgeInsets.symmetric(vertical: size.height * 0.2),
+                      height: size.height,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              HeaderTextWidget(size: size),
+                              SizedBox(height: 20),
+                              Social_large(size: size),
+                            ],
+                          ),
+                          Expanded(
+                            child: Column(
+                              children: [RotatingImageContainer()],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                        key: aboutKey,
+                        child: AboutWidget(
+                            size: size, scrollController: _scrollController)),
+                    Container(
+                      key: certificateKey,
                       color: Colors.transparent,
                       margin: EdgeInsets.all(15),
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child: CertificateWidget(size: size, itemct: 3, itemCt: 3),
+                        child:
+                            CertificateWidget(size: size, itemct: 3, itemCt: 3),
                       ),
                     ),
                     Container(
+                      key: educationKey,
                       color: Colors.transparent,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child: EducationTab(size: size, scrollController: _scrollController),
+                        child: EducationTab(
+                            size: size, scrollController: _scrollController),
                       ),
                     ),
                     Container(
+                      key: skillsKey,
                       color: Colors.transparent,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.03),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.03),
                       child: SizedBox(
                         height: size.height,
                         child: SkillsWidget(size: size, itemct: 4),
                       ),
                     ),
                     Container(
+                      key: projectKey,
                       color: Colors.transparent,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
                         child: Project_Widget(size: size, itemct: 3),
