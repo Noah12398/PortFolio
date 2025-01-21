@@ -62,6 +62,7 @@ class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateM
                       // Desktop layout
                       Container(
                         margin: EdgeInsets.symmetric(vertical: size.height * 0.2),
+                        height: size.height,
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,7 +80,6 @@ class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateM
                             Expanded(
                               child: Container(
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [RotatingImageContainer()],
                                 ),
                               ),
@@ -91,6 +91,7 @@ class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateM
                       // Mobile or Tablet layout
                       Container(
                         margin: EdgeInsets.symmetric(vertical: size.height * 0.1),
+                        height: size.height,
                         child: Column(
                           children: [
                             HeaderTextWidget(size: size),
@@ -100,7 +101,6 @@ class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateM
                           ],
                         ),
                       ),
-                    SizedBox(height: 75,),
                     AboutWidget(size: size, scrollController: _scrollController),
                     Container(
                       color: Colors.transparent,

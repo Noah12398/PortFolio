@@ -11,4 +11,6 @@ class AppColors {
   static const Color revolver = Color(0xFF271b3d);
   static const Color cocoaBrown = Color(0xFF332222);
   static const Color capeCod = Color(0xFF414443);
+    static const Color gravel = Color.fromARGB(255, 64, 65, 64);
+
 }
