@@ -26,10 +26,9 @@ class _RotatingImageContainerState extends State<RotatingImageContainer> {
       child: AnimatedContainer(
         
         duration: Duration(microseconds: 300),
-        transform: Matrix4.rotationZ(isHovered ?0:math.pi/36),
         
-        height: size.width*0.24,
-        width: size.width*0.24,
+        height: isHovered?size.width*0.26:size.width*0.24,
+        width: isHovered?size.width*0.26:size.width*0.24,
         
         decoration: BoxDecoration(
           image: DecorationImage(

@@ -137,7 +137,7 @@ final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
               shaderCallback: (bounds) => LinearGradient(
                 colors: [
                   AppColors.valhalla,
-                  const Color(0xFF9BA4B5),
+                  const Color.fromARGB(255, 7, 84, 227),
                 ],
               ).createShader(bounds),
               child: GradientText(
@@ -159,19 +159,34 @@ final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
             SlideTransition(
               position: _slideAnimation,
               child: Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Text(
-                  'Hi, I’m a passionate Computer Science student with expertise in Flutter, Kotlin, and Python. I love creating innovative, user-friendly applications and solving real-world problems through technology. My projects range from mobile apps to engaging games, reflecting my creativity and technical skills. I’m always eager to learn and grow while contributing to impactful projects. When I’m not coding, I enjoy exploring new tech. Let’s connect and create something amazing!',
-                  style: TextStyle(
-                    fontSize: widget.size.width * 0.015,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400,
-                    color: const Color.fromARGB(255, 21, 21, 21),
-                  ),
-                  textAlign: TextAlign.justify,
-                ),
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+            child: Text(
+              'Hi, I’m a passionate Computer Science student with expertise in Flutter, Kotlin, and Python. '
+              'I enjoy creating user-friendly applications and solving real-world problems with technology. '
+              'From mobile apps to engaging games, my projects reflect creativity and technical skills. '
+              'I’m always eager to learn and contribute to impactful projects. Let’s connect and innovate together!',
+              style: TextStyle(
+                fontSize: widget.size.width * 0.017,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+                color: Colors.black.withOpacity(0.75),
+                height: 1.6,
               ),
+              textAlign: TextAlign.center,
             ),
+          ),
+            ),
+            Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 60),
+          child: Divider(
+            thickness: 2,
+            color: AppColors.studio.withOpacity(0.5),
+            indent: 40,
+            endIndent: 40,
+          ),
+        ),
+                SizedBox(height: widget.size.height * 0.02),
+
           ],
         ),
       ),

@@ -11,7 +11,7 @@ import 'package:portfolio/Screen/Widgets/Certificate_Widget.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/styles.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:animated_background/animated_background.dart';
 
 class DesktopLayout extends StatefulWidget {
   const DesktopLayout({super.key});
@@ -20,7 +20,7 @@ class DesktopLayout extends StatefulWidget {
   State<DesktopLayout> createState() => _DesktopLayoutState();
 }
 
-class _DesktopLayoutState extends State<DesktopLayout> {
+class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateMixin {
   bool isAboutVisible = false;
   ScrollController _scrollController = ScrollController();
 
@@ -50,20 +50,18 @@ class _DesktopLayoutState extends State<DesktopLayout> {
         },
         child: ResponsiveBuilder(
           builder: (context, sizingInformation) {
-            return Container(
-              height: double.infinity,
-              width: double.infinity,
-              decoration: Styles.gradientDecorations,
+            return AnimatedBackground(
+              behaviour: SpaceBehaviour(
+              ),
+              vsync: this,
               child: SingleChildScrollView(
                 controller: _scrollController, // Main scroll controller
                 child: Column(
                   children: [
-                    if (sizingInformation.deviceScreenType ==
-                        DeviceScreenType.desktop)
+                    if (sizingInformation.deviceScreenType == DeviceScreenType.desktop)
                       // Desktop layout
                       Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: size.height * 0.2),
+                        margin: EdgeInsets.symmetric(vertical: size.height * 0.2),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,6 +75,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                                 Social_large(size: size),
                               ],
                             ),
+                            
                             Expanded(
                               child: Container(
                                 child: Column(
@@ -88,12 +87,10 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                           ],
                         ),
                       ),
-                    if (sizingInformation.deviceScreenType !=
-                        DeviceScreenType.desktop)
+                    if (sizingInformation.deviceScreenType != DeviceScreenType.desktop)
                       // Mobile or Tablet layout
                       Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: size.height * 0.1),
+                        margin: EdgeInsets.symmetric(vertical: size.height * 0.1),
                         child: Column(
                           children: [
                             HeaderTextWidget(size: size),
@@ -103,37 +100,28 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                           ],
                         ),
                       ),
-                    
-                    AboutWidget(
-                        size: size, scrollController: _scrollController),
+                    SizedBox(height: 75,),
+                    AboutWidget(size: size, scrollController: _scrollController),
                     Container(
                       color: Colors.transparent,
                       margin: EdgeInsets.all(15),
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child: CertificateWidget(
-                          size: size,
-                          itemct: 3,
-                          itemCt: 3,
-                        ),
+                        child: CertificateWidget(size: size, itemct: 3, itemCt: 3),
                       ),
                     ),
                     Container(
                       color: Colors.transparent,
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child: EducationTab(
-                            size: size, scrollController: _scrollController),
+                        child: EducationTab(size: size, scrollController: _scrollController),
                       ),
                     ),
                     Container(
                       color: Colors.transparent,
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.03),
+                      padding: EdgeInsets.symmetric(vertical: size.width * 0.03),
                       child: SizedBox(
                         height: size.height,
                         child: SkillsWidget(size: size, itemct: 4),
@@ -141,18 +129,13 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                     ),
                     Container(
                       color: Colors.transparent,
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child: Project_Widget(
-                          size: size,
-                          itemct: 3,
-                        ),
+                        child: Project_Widget(size: size, itemct: 3),
                       ),
                     ),
-                        FooterWidget( size: size,),
-
+                    FooterWidget(size: size),
                   ],
                 ),
               ),
