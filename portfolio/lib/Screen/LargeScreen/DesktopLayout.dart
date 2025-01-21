@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Screen/Widgets/Count_Container_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Education_Widget.dart';
+import 'package:portfolio/Screen/Widgets/Footer_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
 import 'package:portfolio/Screen/Widgets/About_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Project_Widget.dart';
@@ -150,6 +151,8 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                         ),
                       ),
                     ),
+                        FooterWidget( size: size,),
+
                   ],
                 ),
               ),
