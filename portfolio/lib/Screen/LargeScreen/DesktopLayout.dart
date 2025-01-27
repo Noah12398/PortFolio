@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/Screen/Widgets/Count_Container_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Education_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Footer_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
@@ -20,9 +19,7 @@ class DesktopLayout extends StatefulWidget {
   @override
   State<DesktopLayout> createState() => _DesktopLayoutState();
 }
-
-class _DesktopLayoutState extends State<DesktopLayout>
-    with TickerProviderStateMixin {
+class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateMixin {
   bool isAboutVisible = false;
   final ScrollController _scrollController = ScrollController();
   final GlobalKey homeKey = GlobalKey();
@@ -31,37 +28,42 @@ class _DesktopLayoutState extends State<DesktopLayout>
   final GlobalKey educationKey = GlobalKey();
   final GlobalKey skillsKey = GlobalKey();
   final GlobalKey projectKey = GlobalKey();
-
-  void _scrollToSection(GlobalKey key) {
-    Scrollable.ensureVisible(
-      key.currentContext!,
-      duration: Duration(milliseconds: 600),
-      curve: Curves.easeInOut,
-    );
-  }
+  
+  late Image particleImage;
 
   @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    // Only preload the image here without using context.
+    particleImage = Image.asset("assets/images/Shape.png");
   }
 
   @override
   Widget build(BuildContext context) {
+    // Now accessing MediaQuery inside build() method
     Size size = MediaQuery.of(context).size;
+
+    // Precache the image here in build() method
+    precacheImage(particleImage.image, context);
 
     return Scaffold(
       appBar: AppBar(
-        
         title: Text('My Portfolio'),
         backgroundColor: Colors.black.withOpacity(0.8),
-        actions: [Spacer(), 
-          BuildNavButton(title: 'Home', key2: homeKey),Spacer(), 
-          BuildNavButton(title: 'About', key2: aboutKey),Spacer(), 
-          BuildNavButton(title: 'Certificates', key2: certificateKey),Spacer(), 
-          BuildNavButton(title: 'Education', key2: educationKey),Spacer(), 
-          BuildNavButton(title: 'Skills', key2: skillsKey),Spacer(), 
-          BuildNavButton(title: 'Projects', key2: projectKey),Spacer(), 
+        actions: [
+          Spacer(),
+          BuildNavButton(title: 'Home', key2: homeKey),
+          Spacer(),
+          BuildNavButton(title: 'About', key2: aboutKey),
+          Spacer(),
+          BuildNavButton(title: 'Certificates', key2: certificateKey),
+          Spacer(),
+          BuildNavButton(title: 'Education', key2: educationKey),
+          Spacer(),
+          BuildNavButton(title: 'Skills', key2: skillsKey),
+          Spacer(),
+          BuildNavButton(title: 'Projects', key2: projectKey),
+          Spacer(),
         ],
       ),
       body: NotificationListener<ScrollNotification>(
@@ -80,7 +82,13 @@ class _DesktopLayoutState extends State<DesktopLayout>
         child: ResponsiveBuilder(
           builder: (context, sizingInformation) {
             return AnimatedBackground(
-              behaviour: SpaceBehaviour(),
+              behaviour: RandomParticleBehaviour(
+                options: ParticleOptions(
+                  spawnMaxRadius: 90,
+                  particleCount: 20,
+                  image: particleImage,
+                ),
+              ),
               vsync: this,
               child: SingleChildScrollView(
                 controller: _scrollController,
@@ -112,9 +120,9 @@ class _DesktopLayoutState extends State<DesktopLayout>
                       ),
                     ),
                     Container(
-                        key: aboutKey,
-                        child: AboutWidget(
-                            size: size, scrollController: _scrollController)),
+                      key: aboutKey,
+                      child: AboutWidget(size: size, scrollController: _scrollController),
+                    ),
                     Container(
                       key: certificateKey,
                       color: Colors.transparent,

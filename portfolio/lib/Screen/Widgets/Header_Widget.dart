@@ -25,7 +25,7 @@ class BuildNavButton extends StatelessWidget {
       child: TextButton(
         onPressed: () => _scrollToSection(key2),
         style: TextButton.styleFrom(
-          foregroundColor: Colors.white,
+          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
           backgroundColor: Colors.transparent,
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           shape: RoundedRectangleBorder(

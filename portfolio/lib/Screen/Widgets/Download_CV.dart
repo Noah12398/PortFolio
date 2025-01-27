@@ -23,7 +23,7 @@ class DownloadCVButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          Text("Download CV",style: TextStyle(color: AppColors.paleSlate),),
+          Text("Download Resume",style: TextStyle(color: AppColors.paleSlate),),
 
           const SizedBox.square(dimension: 12,),
           FaIcon(FontAwesomeIcons.download,color: AppColors.paleSlate,size: 18,)

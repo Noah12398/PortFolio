@@ -67,6 +67,7 @@ flutter:
   assets:
     - assets/images/ProfilePhoto.jpg
     - assets/images/TKM.jpg
+    - assets/images/Shape.png
     - assets/images/Vim.jpg
     - assets/images/HTML.jpg
     - assets/images/CSS.jpg
