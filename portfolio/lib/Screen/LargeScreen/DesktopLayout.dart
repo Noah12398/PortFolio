@@ -19,7 +19,9 @@ class DesktopLayout extends StatefulWidget {
   @override
   State<DesktopLayout> createState() => _DesktopLayoutState();
 }
-class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateMixin {
+
+class _DesktopLayoutState extends State<DesktopLayout>
+    with TickerProviderStateMixin {
   bool isAboutVisible = false;
   final ScrollController _scrollController = ScrollController();
   final GlobalKey homeKey = GlobalKey();
@@ -28,7 +30,7 @@ class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateM
   final GlobalKey educationKey = GlobalKey();
   final GlobalKey skillsKey = GlobalKey();
   final GlobalKey projectKey = GlobalKey();
-  
+
   late Image particleImage;
 
   @override
@@ -47,24 +49,28 @@ class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateM
     precacheImage(particleImage.image, context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My Portfolio'),
-        backgroundColor: Colors.black.withOpacity(0.8),
-        actions: [
-          Spacer(),
-          BuildNavButton(title: 'Home', key2: homeKey),
-          Spacer(),
-          BuildNavButton(title: 'About', key2: aboutKey),
-          Spacer(),
-          BuildNavButton(title: 'Certificates', key2: certificateKey),
-          Spacer(),
-          BuildNavButton(title: 'Education', key2: educationKey),
-          Spacer(),
-          BuildNavButton(title: 'Skills', key2: skillsKey),
-          Spacer(),
-          BuildNavButton(title: 'Projects', key2: projectKey),
-          Spacer(),
-        ],
+      appBar: PreferredSize(
+        preferredSize:
+            Size.fromHeight(80), // Increase the height of the AppBar here
+        child: AppBar(
+          title: Text('My Portfolio'),
+          backgroundColor: Colors.black.withOpacity(0.8),
+          actions: [
+            Spacer(),
+            BuildNavButton(title: 'Home', key2: homeKey),
+            Spacer(),
+            BuildNavButton(title: 'About', key2: aboutKey),
+            Spacer(),
+            BuildNavButton(title: 'Certificates', key2: certificateKey),
+            Spacer(),
+            BuildNavButton(title: 'Education', key2: educationKey),
+            Spacer(),
+            BuildNavButton(title: 'Skills', key2: skillsKey),
+            Spacer(),
+            BuildNavButton(title: 'Projects', key2: projectKey),
+            Spacer(),
+          ],
+        ),
       ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
@@ -121,7 +127,8 @@ class _DesktopLayoutState extends State<DesktopLayout> with TickerProviderStateM
                     ),
                     Container(
                       key: aboutKey,
-                      child: AboutWidget(size: size, scrollController: _scrollController),
+                      child: AboutWidget(
+                          size: size, scrollController: _scrollController),
                     ),
                     Container(
                       key: certificateKey,

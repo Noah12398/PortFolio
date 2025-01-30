@@ -16,7 +16,8 @@ class AboutWidget extends StatefulWidget {
   _AboutWidgetState createState() => _AboutWidgetState();
 }
 
-class _AboutWidgetState extends State<AboutWidget> with TickerProviderStateMixin {
+class _AboutWidgetState extends State<AboutWidget>
+    with TickerProviderStateMixin {
   late AnimationController _slideController;
   late Animation<Offset> _slideAnimation;
   bool isVisible = false;
@@ -57,8 +58,8 @@ class _AboutWidgetState extends State<AboutWidget> with TickerProviderStateMixin
       final renderBox = context.findRenderObject() as RenderBox?;
       if (renderBox != null) {
         final widgetPosition = renderBox.localToGlobal(Offset.zero).dy;
-final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
-                        widgetPosition < viewportHeight;
+        final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
+            widgetPosition < viewportHeight;
 // print(isWidgetVisible);
         // If widget becomes invisible while scrolling down, force slide up
         if (!isWidgetVisible && isScrollingDown) {
@@ -88,32 +89,33 @@ final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
   }
 
   void _updateAnimation() {
-  final beginOffset = _forceSlideUp
-      ? const Offset(0.0, -1.0) // Force sliding up when scrolling down
-      : (_forceSlideDown
-          ? const Offset(0.0, 1.0) // Force sliding down when scrolling up
-          : (isScrollingDown ? const Offset(0.0, 1.0) : const Offset(0.0, -1.0)));
+    final beginOffset = _forceSlideUp
+        ? const Offset(0.0, -1.0) // Force sliding up when scrolling down
+        : (_forceSlideDown
+            ? const Offset(0.0, 1.0) // Force sliding down when scrolling up
+            : (isScrollingDown
+                ? const Offset(0.0, 1.0)
+                : const Offset(0.0, -1.0)));
 
-  _slideAnimation = Tween<Offset>(
-    begin: beginOffset,
-    end: Offset.zero, // Always slide into position
-  ).animate(CurvedAnimation(
-    parent: _slideController,
-    curve: Curves.easeOutCubic,
-  ));
+    _slideAnimation = Tween<Offset>(
+      begin: beginOffset,
+      end: Offset.zero, // Always slide into position
+    ).animate(CurvedAnimation(
+      parent: _slideController,
+      curve: Curves.easeOutCubic,
+    ));
 
-  // Restart the animation when forced slide occurs
-  if (_forceSlideUp || _forceSlideDown) {
-    _slideController.forward(from: 0.0).then((_) {
-      // Reset forced flags after animation completes
-      setState(() {
-        _forceSlideUp = false;
-        _forceSlideDown = false;
+    // Restart the animation when forced slide occurs
+    if (_forceSlideUp || _forceSlideDown) {
+      _slideController.forward(from: 0.0).then((_) {
+        // Reset forced flags after animation completes
+        setState(() {
+          _forceSlideUp = false;
+          _forceSlideDown = false;
+        });
       });
-    });
+    }
   }
-}
-
 
   @override
   void dispose() {
@@ -129,7 +131,7 @@ final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
       color: Colors.transparent,
       child: Card(
         elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(30)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -137,7 +139,7 @@ final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
               shaderCallback: (bounds) => LinearGradient(
                 colors: [
                   AppColors.valhalla,
-                  const Color.fromARGB(255, 7, 84, 227),
+                  AppColors.darkblue,
                 ],
               ).createShader(bounds),
               child: GradientText(
@@ -159,34 +161,34 @@ final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
             SlideTransition(
               position: _slideAnimation,
               child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
-            child: Text(
-              'Hi, I’m a passionate Computer Science student with expertise in Flutter, Kotlin, and Python. '
-              'I enjoy creating user-friendly applications and solving real-world problems with technology. '
-              'From mobile apps to engaging games, my projects reflect creativity and technical skills. '
-              'I’m always eager to learn and contribute to impactful projects. Let’s connect and innovate together!',
-              style: TextStyle(
-                fontSize: widget.size.width * 0.017,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w400,
-                color: Colors.black.withOpacity(0.75),
-                height: 1.6,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+                child: Text(
+                  'Hi, I’m a passionate Computer Science student with expertise in Flutter, Kotlin, and Python. '
+                  'I enjoy creating user-friendly applications and solving real-world problems with technology. '
+                  'From mobile apps to engaging games, my projects reflect creativity and technical skills. '
+                  'I’m always eager to learn and contribute to impactful projects. Let’s connect and innovate together!',
+                  style: TextStyle(
+                    fontSize: widget.size.width * 0.017,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black.withOpacity(0.75),
+                    height: 1.6,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
-              textAlign: TextAlign.center,
-            ),
-          ),
             ),
             Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 60),
-          child: Divider(
-            thickness: 2,
-            color: AppColors.studio.withOpacity(0.5),
-            indent: 40,
-            endIndent: 40,
-          ),
-        ),
-                SizedBox(height: widget.size.height * 0.02),
-
+              padding: const EdgeInsets.symmetric(horizontal: 60),
+              child: Divider(
+                thickness: 2,
+                color: AppColors.studio.withOpacity(0.5),
+                indent: 40,
+                endIndent: 40,
+              ),
+            ),
+            SizedBox(height: widget.size.height * 0.02),
           ],
         ),
       ),

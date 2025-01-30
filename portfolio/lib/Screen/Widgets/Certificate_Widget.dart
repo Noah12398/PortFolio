@@ -51,7 +51,7 @@ class _CertificateWidgetState extends State<CertificateWidget> {
         GradientText(
           'Certificates',
           colors: [AppColors.valhalla,
-                                   const Color.fromARGB(255, 7, 84, 227),
+                                   AppColors.darkblue,
 ],
           style: TextStyle(
             fontSize: widget.size.width * 0.04,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/colors.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class SkillsWidget extends StatelessWidget {
@@ -26,7 +27,10 @@ class SkillsWidget extends StatelessWidget {
         children: [
           GradientText(
             "Skills",
-            colors: [Colors.blue, Colors.orange],
+            colors: [
+              AppColors.valhalla,
+              AppColors.darkblue,
+            ],
             style: TextStyle(
               fontSize: size.width * 0.04,
               fontWeight: FontWeight.bold,
@@ -48,12 +52,11 @@ class SkillsWidget extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Colors.teal,
+                    color: AppColors.blue,
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                   child: Card(
-                    elevation: 3,
-                    color: Colors.blue[50],
+                    color: const Color.fromARGB(255, 214, 206, 206),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

@@ -40,6 +40,12 @@ class _Project_WidgetState extends State<Project_Widget> {
       'title': 'Notes',
       'link': 'https://github.com/Noah12398/NotesApp'
     },
+    {
+      'image': 'assets/images/Titanic.png',
+      'title': 'Titanic Survival Prediction',
+      'link': 'https://github.com/Noah12398/Titanic',
+      'deploy': 'https://titanic-y364.onrender.com'
+    },
   ];
 
   List<bool> _isHovered = [];
@@ -56,7 +62,10 @@ class _Project_WidgetState extends State<Project_Widget> {
       children: [
         GradientText(
           'Projects',
-          colors: [AppColors.valhalla, AppColors.capeCod],
+          colors: [
+            AppColors.valhalla,
+            AppColors.darkblue,
+          ],
           style: TextStyle(
             fontSize: widget.size.width * 0.04,
             fontWeight: FontWeight.bold,
@@ -91,6 +100,7 @@ class _Project_WidgetState extends State<Project_Widget> {
                   child: Stack(
                     children: [
                       Card(
+                        elevation: 0,
                         color: Colors.transparent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -137,9 +147,9 @@ class _Project_WidgetState extends State<Project_Widget> {
                           child: Container(
                             color: Colors.black.withOpacity(
                                 0.6), // Semi-transparent background
-                            child: Column(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment
-                                  .end, // Align children at the bottom
+                                  .center, // Align children at the bottom
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 ElevatedButton(
@@ -191,14 +201,66 @@ class _Project_WidgetState extends State<Project_Widget> {
                                     ],
                                   ),
                                 ),
-
                                 SizedBox(
-                                    height:
+                                    width:
                                         20), // Add spacing from the bottom edge
+                                if (ProjectList[index]['deploy'] != null &&
+                                    ProjectList[index]['deploy']!.isNotEmpty)
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      final url = ProjectList[index]['deploy'];
+                                      if (url != null) {
+                                        _launchURL(url);
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors
+                                          .gravel, // Dark professional color
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            30), // Smoother rounded corners
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 24,
+                                          vertical: 16), // Better spacing
+                                      elevation:
+                                          5, // Add subtle shadow for depth
+                                      shadowColor:
+                                          Colors.black.withOpacity(0.3),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize
+                                          .min, // Adjust width based on content
+                                      children: [
+                                        Icon(
+                                          Icons
+                                              .visibility, // Add an icon for "View"
+                                          color: Colors.white,
+                                          size: 22,
+                                        ),
+                                        SizedBox(
+                                            width:
+                                                10), // Space between icon and text
+                                        Text(
+                                          'View',
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight
+                                                .w600, // Semi-bold for better readability
+                                            fontFamily:
+                                                'Poppins', // Use a professional font
+                                            letterSpacing:
+                                                0.8, // Improve spacing between letters
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                               ],
                             ),
                           ),
-                        )
+                        ),
                     ],
                   ),
                 ),

@@ -25,8 +25,8 @@ class HeaderTextWidget extends StatelessWidget {
               child: TextWidget(
             sSize: size,
             text: "I am Noah John Puthayathu",
-            color: Colors.white,
-            size: 26,
+            color: AppColors.sage,
+            size: 28,
             fw: FontWeight.bold,
             alignment: TextAlign.center,
           )),
@@ -43,14 +43,14 @@ class HeaderTextWidget extends StatelessWidget {
                 alignment: TextAlign.center,
                 text:
                     "I break down complex user experinece problems to create integritiy focussed solutions that connect billions of people",
-                size: 16,
-                color: Colors.white,
+                size: 19,
+                color: AppColors.sage,
                 fw: FontWeight.normal),
           ),
         ],
       ),
     );
-  } 
+  }
 }
 
 class GradientTextWidget extends StatelessWidget {
@@ -78,9 +78,9 @@ class GradientTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GradientText(
       textAlign: size.width < 600 && alignment != null ? alignment : null,
-      "$text1\n${text2??""}",
+      "$text1\n${text2 ?? ""}",
       colors: [
-        AppColors.studio,
+        AppColors.green,
         AppColors.paleSlate,
       ],
       style: TextStyle(

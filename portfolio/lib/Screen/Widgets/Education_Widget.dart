@@ -32,12 +32,14 @@ class _EducationTabState extends State<EducationTab>
     {
       'imagePath': 'assets/images/Vim.jpg',
       'title': 'Vimalagiri International School',
-      'details': 'Completed high school with a focus on science subjects and extracurricular activities like sports and drama.'
+      'details':
+          'Completed high school with a focus on science subjects and extracurricular activities like sports and drama.'
     },
     {
       'imagePath': 'assets/images/TKM.jpg',
       'title': 'TKM College of Engineering',
-      'details': 'Currently pursuing a degree in Computer Science Engineering, actively involved in coding competitions, hackathons, and tech events.'
+      'details':
+          'Currently pursuing a degree in Computer Science Engineering, actively involved in coding competitions, hackathons, and tech events.'
     },
   ];
 
@@ -163,7 +165,10 @@ class _EducationTabState extends State<EducationTab>
       children: [
         GradientText(
           'Education',
-          colors: [AppColors.valhalla, AppColors.capeCod],
+          colors: [
+            AppColors.valhalla,
+            AppColors.darkblue,
+          ],
           style: TextStyle(
               fontSize: widget.size.width * 0.04, fontWeight: FontWeight.bold),
         ),
@@ -186,7 +191,7 @@ class _EducationTabState extends State<EducationTab>
                               EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            color: Colors.teal,
+                            color: AppColors.blue,
                             borderRadius: BorderRadius.circular(50.0),
                           ),
                           child: Card(
@@ -209,36 +214,37 @@ class _EducationTabState extends State<EducationTab>
                                   child: SlideTransition(
                                     position: _slideAnimation,
                                     child: FadeTransition(
-                                      opacity: _fadeAnimation, // Apply fade effect
+                                      opacity:
+                                          _fadeAnimation, // Apply fade effect
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            education['title']!,
-                                            style: TextStyle(
-                                              color: Colors.black87,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              education['title']!,
+                                              style: TextStyle(
+                                                color: Colors.black87,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              textAlign: TextAlign.center,
                                             ),
-                                            textAlign: TextAlign.center,
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            education['details']!,
-                                            style: TextStyle(
-                                              color: Colors.black54,
-                                              fontSize: 16,
-                                              fontStyle: FontStyle.italic,
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              education['details']!,
+                                              style: TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 16,
+                                                fontStyle: FontStyle.italic,
+                                              ),
+                                              textAlign: TextAlign.center,
                                             ),
-                                            textAlign: TextAlign.center,
                                           ),
-                                        ),
-                                      ],
+                                        ],
                                       ),
                                     ),
                                   ),

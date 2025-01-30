@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/colors.dart';
 
 class BuildNavButton extends StatelessWidget {
   final String title;
@@ -10,6 +11,7 @@ class BuildNavButton extends StatelessWidget {
     required this.key2,
   });
 
+  // Scroll to the section specified by the given GlobalKey
   void _scrollToSection(GlobalKey key) {
     Scrollable.ensureVisible(
       key.currentContext!,
@@ -21,23 +23,30 @@ class BuildNavButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12), // Added padding for better spacing
       child: TextButton(
         onPressed: () => _scrollToSection(key2),
         style: TextButton.styleFrom(
-          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+          foregroundColor: Colors.white, // More contrast for better readability
           backgroundColor: Colors.transparent,
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14), // Balanced padding
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
+          // Subtle hover effect for better user experience
+          side: BorderSide(
+            color: AppColors.grey.withOpacity(0.6), 
+            width: 1.5,
+          ),
+          // Elevation and shadow for depth
+          elevation: 3,
         ),
         child: Text(
           title,
           style: TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 1.2,
+            fontWeight: FontWeight.w600, // Slightly bolder font weight
+            letterSpacing: 1.5, // Enhanced letter spacing for readability
           ),
         ),
       ),
