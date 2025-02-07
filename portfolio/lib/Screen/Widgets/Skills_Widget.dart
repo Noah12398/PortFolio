@@ -21,24 +21,26 @@ class SkillsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: size.height * 0.7, // Adjust height for GridView
-      child: Column(
-        children: [
-          GradientText(
-            "Skills",
-            colors: [
-              AppColors.valhalla,
-              AppColors.darkblue,
-            ],
-            style: TextStyle(
-              fontSize: size.width * 0.04,
-              fontWeight: FontWeight.bold,
+    return SingleChildScrollView( // Make sure to wrap in SingleChildScrollView for scrolling
+      child: Padding(
+        padding: const EdgeInsets.all(100.0),
+        child: Column(
+          children: [
+            GradientText(
+              "Skills",
+              colors: [
+                AppColors.valhalla,
+                AppColors.darkblue,
+              ],
+              style: TextStyle(
+                fontSize: size.width * 0.04,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SizedBox(height: 10), // Add spacing between title and grid
-          Expanded(
-            child: GridView.builder(
+            SizedBox(height: 10), // Add spacing between title and grid
+            GridView.builder(
+              shrinkWrap: true, // Allow GridView to take only the space it needs
+              physics: NeverScrollableScrollPhysics(), // Disable scrolling for GridView
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: itemct,
                 crossAxisSpacing: size.width * 0.05,
@@ -47,7 +49,6 @@ class SkillsWidget extends StatelessWidget {
               itemCount: skillList.length,
               itemBuilder: (context, index) {
                 final skill = skillList[index];
-
                 return Container(
                   padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   alignment: Alignment.center,
@@ -109,8 +110,8 @@ class SkillsWidget extends StatelessWidget {
                 );
               },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

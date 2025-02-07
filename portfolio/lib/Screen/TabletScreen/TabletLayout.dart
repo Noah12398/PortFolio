@@ -89,7 +89,6 @@ class _TabletLayoutState extends State<TabletLayout> {
                     height: 400,
                     child: CertificateWidget(
                       size: size,
-                      itemct: 2,
                       itemCt: 2,
                     ),
                   ),

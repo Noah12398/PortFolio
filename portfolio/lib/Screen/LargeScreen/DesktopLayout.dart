@@ -138,8 +138,8 @@ class _DesktopLayoutState extends State<DesktopLayout>
                           EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height,
-                        child:
-                            CertificateWidget(size: size, itemct: 3, itemCt: 3),
+                        child: CertificateWidget(
+                            size: size, itemCt: 3), // Corrected to itemCt
                       ),
                     ),
                     Container(

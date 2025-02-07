@@ -82,7 +82,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                   height: size.width * 0.06, // Adjusted space between sections
                 ),
                 // Count Widget
-               
+
                 SizedBox(
                   height:
                       size.width * 0.06, // Adjusted space after count widgets
@@ -95,7 +95,8 @@ class _MobileLayoutState extends State<MobileLayout> {
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                   child: SizedBox(
                     height: 300, // Adjusted height for mobile view
-                    child: CertificateWidget(size: size, itemct: 1, itemCt: 1),
+                    child: CertificateWidget(
+                        size: size, itemCt: 1), // Corrected to itemCt
                   ),
                 ),
                 // Education Tab
