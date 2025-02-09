@@ -20,7 +20,8 @@ class TabletLayout extends StatefulWidget {
   State<TabletLayout> createState() => _TabletLayoutState();
 }
 
-class _TabletLayoutState extends State<TabletLayout> with TickerProviderStateMixin {
+class _TabletLayoutState extends State<TabletLayout>
+    with TickerProviderStateMixin {
   bool isAboutVisible = false;
   final ScrollController _scrollController = ScrollController();
   final GlobalKey homeKey = GlobalKey();
@@ -132,17 +133,17 @@ class _TabletLayoutState extends State<TabletLayout> with TickerProviderStateMix
                       key: certificateKey,
                       color: Colors.transparent,
                       margin: EdgeInsets.all(15),
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
-                      child: SizedBox(
-                        height: size.height ,
-                        child: CertificateWidget(size: size, itemCt: 3),
-                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      child: CertificateWidget(size: size, itemCt: 3),
                     ),
+
                     // Education Section
                     Container(
                       key: educationKey,
                       color: Colors.transparent,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height * 0.75,
                         child: EducationTab(
@@ -155,13 +156,13 @@ class _TabletLayoutState extends State<TabletLayout> with TickerProviderStateMix
                     Container(
                       key: skillsKey,
                       color: Colors.transparent,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.03),
-                      child: SizedBox(
-                        height: size.height * 0.7,
-                        child: SkillsWidget(size: size, itemct: 3),
-                      ),
+                      margin: EdgeInsets.all(15),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      child: SkillsWidget(size: size, itemct: 3),
                     ),
                     // Projects Section
+                    
                     Container(
                       key: projectKey,
                       color: Colors.transparent,

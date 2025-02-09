@@ -91,14 +91,12 @@ class _MobileLayoutState extends State<MobileLayout> {
 
                 // Certificate Widget
                 Container(
-                  color: Colors.transparent,
-                  padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
-                  child: SizedBox(
-                    height: 300, // Adjusted height for mobile view
-                    child: CertificateWidget(
-                        size: size, itemCt: 1), // Corrected to itemCt
-                  ),
-                ),
+                      color: Colors.transparent,
+                      margin: EdgeInsets.all(15),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      child: CertificateWidget(size: size, itemCt: 3),
+                    ),
                 // Education Tab
                 Container(
                   color: Colors.transparent,

@@ -106,7 +106,7 @@ class Social_large extends StatelessWidget {
         children: [
           DownloadCVButton(),
           SizedBox(
-            width: size.width*0.025,
+            width: size.width*0.02,
           ),
           SocialWidget()
         ],

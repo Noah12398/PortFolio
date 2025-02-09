@@ -111,7 +111,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                               child: Text(
                                 projectList[index]['title']!,
                                 style: TextStyle(
-                                  fontSize: screenSize.width * 0.04,
+                                  fontSize: screenSize.width * 0.015,
                                   fontWeight: FontWeight.bold,
                                   color: AppColors.valhalla,
                                 ),
