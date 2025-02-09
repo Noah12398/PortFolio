@@ -162,18 +162,17 @@ class _TabletLayoutState extends State<TabletLayout>
                       child: SkillsWidget(size: size, itemct: 3),
                     ),
                     // Projects Section
-                    
+
                     Container(
                       key: projectKey,
                       color: Colors.transparent,
+                      margin: EdgeInsets.all(15),
                       padding:
                           EdgeInsets.symmetric(vertical: size.width * 0.05),
-                      child: SizedBox(
-                        height: size
-                            .height, // Set a height for your SizedBox if needed
+                      
                         child: ProjectWidget(size: size, itemct: 2),
                       ),
-                    ),
+                      
                     // Footer Section
                     FooterWidget(size: size),
                   ],

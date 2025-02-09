@@ -61,7 +61,11 @@ class _ProjectWidgetState extends State<ProjectWidget> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final crossAxisCount = screenSize.width > 1000 ? 3 : screenSize.width > 600 ? 2 : 1;
+    final crossAxisCount = screenSize.width > 1000
+        ? 3
+        : screenSize.width > 600
+            ? 2
+            : 1;
 
     return Column(
       children: [
@@ -73,75 +77,85 @@ class _ProjectWidgetState extends State<ProjectWidget> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-              ),
-              itemCount: projectList.length,
-              itemBuilder: (context, index) {
-                return MouseRegion(
-                  onEnter: (_) => setState(() => _isHovered[index] = true),
-                  onExit: (_) => setState(() => _isHovered[index] = false),
-                  child: Stack(
-                    children: [
-                      Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        elevation: 5,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
-                                child: Image.asset(
-                                  projectList[index]['image']!,
-                                  fit: BoxFit.cover,
-                                  width: double.infinity,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                projectList[index]['title']!,
-                                style: TextStyle(
-                                  fontSize: screenSize.width * 0.015,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.valhalla,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+              childAspectRatio: 1.6, // Controls rectangle shape
+            ),
+            itemCount: projectList.length,
+            itemBuilder: (context, index) {
+              return MouseRegion(
+                onEnter: (_) => setState(() => _isHovered[index] = true),
+                onExit: (_) => setState(() => _isHovered[index] = false),
+                child: Stack(
+                  children: [
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      if (_isHovered[index])
-                        Positioned.fill(
+                      elevation: 5,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AspectRatio(
+                            aspectRatio:
+                                2.25, // Set the aspect ratio, 1.5 is just an example
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(12)),
+                              child: Image.asset(
+                                projectList[index]['image']!,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              projectList[index]['title']!,
+                              style: TextStyle(
+                                fontSize: screenSize.width * 0.018,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.valhalla,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (_isHovered[index])
+                      Positioned.fill(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
                           child: Container(
                             color: Colors.black.withOpacity(0.6),
                             child: Center(
                               child: Wrap(
                                 spacing: 10,
                                 children: [
-                                  _buildButton('Get Code', Icons.code, projectList[index]['link']),
+                                  _buildButton('Get Code', Icons.code,
+                                      projectList[index]['link']),
                                   if (projectList[index]['deploy'] != null)
-                                    _buildButton('View', Icons.visibility, projectList[index]['deploy']),
+                                    _buildButton('View', Icons.visibility,
+                                        projectList[index]['deploy']),
                                 ],
                               ),
                             ),
                           ),
                         ),
-                    ],
-                  ),
-                );
-              },
-            ),
+                      ),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ],
