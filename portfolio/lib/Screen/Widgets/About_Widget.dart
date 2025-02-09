@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-
 class AboutWidget extends StatefulWidget {
   final Size size;
   final ScrollController scrollController;
@@ -16,8 +15,7 @@ class AboutWidget extends StatefulWidget {
   _AboutWidgetState createState() => _AboutWidgetState();
 }
 
-class _AboutWidgetState extends State<AboutWidget>
-    with TickerProviderStateMixin {
+class _AboutWidgetState extends State<AboutWidget> with TickerProviderStateMixin {
   late AnimationController _slideController;
   late Animation<Offset> _slideAnimation;
   bool isVisible = false;
@@ -60,17 +58,15 @@ class _AboutWidgetState extends State<AboutWidget>
         final widgetPosition = renderBox.localToGlobal(Offset.zero).dy;
         final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
             widgetPosition < viewportHeight;
-// print(isWidgetVisible);
-        // If widget becomes invisible while scrolling down, force slide up
+
+        // Handle slide-up/slide-down on visibility
         if (!isWidgetVisible && isScrollingDown) {
           setState(() {
             _forceSlideUp = true;
             _forceSlideDown = false;
             isVisible = false;
           });
-        }
-        // If widget becomes invisible while scrolling up, force slide down
-        else if (!isWidgetVisible && !isScrollingDown) {
+        } else if (!isWidgetVisible && !isScrollingDown) {
           setState(() {
             _forceSlideDown = true;
             _forceSlideUp = false;
@@ -137,17 +133,11 @@ class _AboutWidgetState extends State<AboutWidget>
           children: [
             ShaderMask(
               shaderCallback: (bounds) => LinearGradient(
-                colors: [
-                  AppColors.valhalla,
-                  AppColors.darkblue,
-                ],
+                colors: [AppColors.valhalla, AppColors.darkblue],
               ).createShader(bounds),
               child: GradientText(
                 "About",
-                colors: [
-                  AppColors.studio,
-                  AppColors.paleSlate,
-                ],
+                colors: [AppColors.studio, AppColors.paleSlate],
                 style: TextStyle(
                   fontSize: widget.size.width * 0.030,
                   fontFamily: 'Poppins',
@@ -155,14 +145,11 @@ class _AboutWidgetState extends State<AboutWidget>
                 ),
               ),
             ),
-            SizedBox(
-              height: widget.size.height * 0.02,
-            ),
+            SizedBox(height: widget.size.height * 0.02),
             SlideTransition(
               position: _slideAnimation,
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
                 child: Text(
                   'Hi, I’m a passionate Computer Science student with expertise in Flutter, Kotlin, and Python. '
                   'I enjoy creating user-friendly applications and solving real-world problems with technology. '

@@ -29,11 +29,10 @@ class BuildNavButton extends StatelessWidget {
         style: TextButton.styleFrom(
           foregroundColor: Colors.white, // More contrast for better readability
           backgroundColor: Colors.transparent,
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14), // Balanced padding
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
-          // Subtle hover effect for better user experience
           side: BorderSide(
             color: AppColors.grey.withOpacity(0.6), 
             width: 1.5,

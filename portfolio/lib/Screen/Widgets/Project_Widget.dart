@@ -23,7 +23,8 @@ class _Project_WidgetState extends State<Project_Widget> {
     {
       'image': 'assets/images/Recipemaker.png',
       'title': 'Recipe Maker',
-      'link': 'https://github.com/Noah12398/Recipe-Maker'
+      'link': 'https://github.com/Noah12398/Recipe-Maker',
+      'deploy': 'https://recipe-maker-9c7a0.web.app/'
     },
     {
       'image': 'assets/images/Cargame.png',
@@ -277,7 +278,6 @@ class _Project_WidgetState extends State<Project_Widget> {
   }
 
   void _launchURL(String url) {
-    // Using url_launcher package to open the link in the browser
     launchUrl(Uri.parse(url));
   }
 }

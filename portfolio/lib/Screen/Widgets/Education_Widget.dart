@@ -90,9 +90,9 @@ class _EducationTabState extends State<EducationTab>
         final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
             widgetPosition < viewportHeight;
 
-        print('Widget Position: $widgetPosition');
-        print('Viewport Height: $viewportHeight');
-        print('Is Widget Visible: $isWidgetVisible');
+       // print('Widget Position: $widgetPosition');
+       // print('Viewport Height: $viewportHeight');
+       // print('Is Widget Visible: $isWidgetVisible');
 
         // If widget becomes invisible while scrolling down, force slide up
         if (!isWidgetVisible && isScrollingDown) {

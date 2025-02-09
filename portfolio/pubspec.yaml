@@ -74,12 +74,12 @@ flutter:
     - assets/images/TKM.jpg
     - assets/images/Shape.png
     - assets/images/Vim.jpg
-    - assets/images/HTML.jpg
-    - assets/images/CSS.jpg
-    - assets/images/Python.jpg
-    - assets/images/Flutter.jpg
-    - assets/images/Java.jpg
-    - assets/images/C.jpg
+    - assets/images/HTML.png
+    - assets/images/CSS.png
+    - assets/images/Python.png
+    - assets/images/Flutter.png
+    - assets/images/Java.png
+    - assets/images/C.png
     - assets/images/Cybersecurity.pdf
     - assets/images/FullStack.pdf
     - assets/images/Backend.pdf

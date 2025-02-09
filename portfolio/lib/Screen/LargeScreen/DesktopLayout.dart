@@ -162,17 +162,19 @@ class _DesktopLayoutState extends State<DesktopLayout>
                         height: size.height,
                         child: SkillsWidget(size: size, itemct: 4),
                       ),
-                    ),
-                    Container(
-                      key: projectKey,
-                      color: Colors.transparent,
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.05),
-                      child: SizedBox(
-                        height: size.height,
-                        child: Project_Widget(size: size, itemct: 3),
-                      ),
-                    ),
+                    ),Container(
+  key: projectKey,
+  color: Colors.transparent,
+  padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+  child: ConstrainedBox(
+    constraints: BoxConstraints(
+      minHeight: 200, // Minimum height you want to set
+      maxHeight: size.height * 2.0, // Maximum height (adjust as needed)
+    ),
+    child: Project_Widget(size: size, itemct: 3),
+  ),
+),
+
                     FooterWidget(size: size),
                   ],
                 ),

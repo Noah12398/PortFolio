@@ -9,12 +9,12 @@ class SkillsWidget extends StatelessWidget {
   SkillsWidget({super.key, required this.size, required this.itemct});
 
   final List<Map<String, dynamic>> skillList = [
-    {'imagePath': 'assets/images/HTML.jpg', 'stars': 4, 'title': 'HTML'},
-    {'imagePath': 'assets/images/CSS.jpg', 'stars': 4, 'title': 'CSS'},
-    {'imagePath': 'assets/images/Python.jpg', 'stars': 4, 'title': 'Python'},
-    {'imagePath': 'assets/images/C.jpg', 'stars': 3, 'title': 'C'},
-    {'imagePath': 'assets/images/Java.jpg', 'stars': 3, 'title': 'Java'},
-    {'imagePath': 'assets/images/Flutter.jpg', 'stars': 4, 'title': 'Flutter'},
+    {'imagePath': 'assets/images/HTML.png', 'stars': 4, 'title': 'HTML'},
+    {'imagePath': 'assets/images/CSS.png', 'stars': 4, 'title': 'CSS'},
+    {'imagePath': 'assets/images/Python.png', 'stars': 4, 'title': 'Python'},
+    {'imagePath': 'assets/images/C.png', 'stars': 3, 'title': 'C'},
+    {'imagePath': 'assets/images/Java.png', 'stars': 3, 'title': 'Java'},
+    {'imagePath': 'assets/images/Flutter.png', 'stars': 4, 'title': 'Flutter'},
     {'imagePath': 'assets/images/Kotlin.png', 'stars': 3, 'title': 'Kotlin'},
     {'imagePath': 'assets/images/C++.png', 'stars': 3, 'title': 'C++'},
   ];
