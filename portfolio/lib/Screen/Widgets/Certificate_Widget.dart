@@ -47,6 +47,7 @@ class _CertificateWidgetState extends State<CertificateWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GradientText(
           'Certificates',
@@ -61,20 +62,28 @@ class _CertificateWidgetState extends State<CertificateWidget> {
         ),
         SizedBox(height: widget.size.height * 0.02), // Space between title and grid
         Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: GridView.builder(
-            shrinkWrap: true, // Make GridView take only the space it needs
-            physics: NeverScrollableScrollPhysics(), // Disable scrolling for GridView
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: widget.itemCt, // Number of items per row
-              crossAxisSpacing: widget.size.width * 0.05,
-              mainAxisSpacing: widget.size.height * 0.05,
-            ),
-            itemCount: certificateList.length,
-            itemBuilder: (context, index) {
-              return PdfView(
-                controller: pdfControllers[index], // Use the persistent controller
-                scrollDirection: Axis.vertical, // Make sure it scrolls vertically if necessary
+          padding: const EdgeInsets.all(20.0),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              int crossAxisCount = (constraints.maxWidth / 250).floor(); // Adjust crossAxisCount based on screen width
+              crossAxisCount = crossAxisCount < 2 ? 2 : crossAxisCount; // Set a minimum of 2 items per row
+              return SingleChildScrollView(
+                child: GridView.builder(
+                  shrinkWrap: true, // Make GridView take only the space it needs
+                  physics: NeverScrollableScrollPhysics(), // Disable scrolling for GridView
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount, // Dynamically calculated number of items per row
+                    crossAxisSpacing: widget.size.width * 0.05,
+                    mainAxisSpacing: widget.size.height * 0.05,
+                  ),
+                  itemCount: certificateList.length,
+                  itemBuilder: (context, index) {
+                    return PdfView(
+                      controller: pdfControllers[index], // Use the persistent controller
+                      scrollDirection: Axis.vertical, // Make sure it scrolls vertically if necessary
+                    );
+                  },
+                ),
               );
             },
           ),

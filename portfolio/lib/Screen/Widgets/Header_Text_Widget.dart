@@ -102,12 +102,11 @@ class Social_large extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: size.width * 0.5,
       child: Row(
         children: [
           DownloadCVButton(),
           SizedBox(
-            width: 20,
+            width: size.width*0.025,
           ),
           SocialWidget()
         ],

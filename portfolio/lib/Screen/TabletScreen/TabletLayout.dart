@@ -97,14 +97,15 @@ class _TabletLayoutState extends State<TabletLayout> with TickerProviderStateMix
                     // Home Section
                     Container(
                       key: homeKey,
-                      margin: EdgeInsets.symmetric(vertical: size.height * 0.15),
-                      height: size.height * 0.85, // Adjusted for tablet size
+                      margin: EdgeInsets.symmetric(vertical: size.height * 0.2),
+                      height: size.height,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               HeaderTextWidget(size: size),
                               SizedBox(height: 20),
@@ -119,7 +120,6 @@ class _TabletLayoutState extends State<TabletLayout> with TickerProviderStateMix
                         ],
                       ),
                     ),
-                    // About Section
                     Container(
                       key: aboutKey,
                       child: AboutWidget(
@@ -134,7 +134,7 @@ class _TabletLayoutState extends State<TabletLayout> with TickerProviderStateMix
                       margin: EdgeInsets.all(15),
                       padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
-                        height: size.height * 0.7,
+                        height: size.height ,
                         child: CertificateWidget(size: size, itemCt: 3),
                       ),
                     ),
@@ -170,7 +170,7 @@ class _TabletLayoutState extends State<TabletLayout> with TickerProviderStateMix
                       child: SizedBox(
                         height: size
                             .height, // Set a height for your SizedBox if needed
-                        child: Project_Widget(size: size, itemct: 2),
+                        child: ProjectWidget(size: size, itemct: 2),
                       ),
                     ),
                     // Footer Section

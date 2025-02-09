@@ -122,7 +122,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                   padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                   child: SizedBox(
                     height: size.height,
-                    child: Project_Widget(
+                    child: ProjectWidget(
                       size: size,
                       itemct: 1, // Adjusted for mobile
                     ),

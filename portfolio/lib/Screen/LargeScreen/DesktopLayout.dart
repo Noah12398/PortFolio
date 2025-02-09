@@ -171,7 +171,7 @@ class _DesktopLayoutState extends State<DesktopLayout>
       minHeight: 200, // Minimum height you want to set
       maxHeight: size.height * 2.0, // Maximum height (adjust as needed)
     ),
-    child: Project_Widget(size: size, itemct: 3),
+    child: ProjectWidget(size: size, itemct: 3),
   ),
 ),
 
