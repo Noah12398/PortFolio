@@ -103,7 +103,6 @@ class _DesktopLayoutState extends State<DesktopLayout>
                     Container(
                       key: homeKey,
                       margin: EdgeInsets.symmetric(vertical: size.height * 0.2),
-                      height: size.height,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,

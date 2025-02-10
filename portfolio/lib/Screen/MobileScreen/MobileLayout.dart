@@ -56,30 +56,27 @@ class _MobileLayoutState extends State<MobileLayout>
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My Portfolio'),
-        backgroundColor: Colors.black.withOpacity(0.8),
-        actions: [
-          TextButton(
-              onPressed: () => scrollToSection(homeKey),
-              child: Text("Home", style: TextStyle(color: Colors.white))),
-          TextButton(
-              onPressed: () => scrollToSection(aboutKey),
-              child: Text("About", style: TextStyle(color: Colors.white))),
-          TextButton(
-              onPressed: () => scrollToSection(certificateKey),
-              child:
-                  Text("Certificates", style: TextStyle(color: Colors.white))),
-          TextButton(
-              onPressed: () => scrollToSection(educationKey),
-              child: Text("Education", style: TextStyle(color: Colors.white))),
-          TextButton(
-              onPressed: () => scrollToSection(skillsKey),
-              child: Text("Skills", style: TextStyle(color: Colors.white))),
-          TextButton(
-              onPressed: () => scrollToSection(projectKey),
-              child: Text("Projects", style: TextStyle(color: Colors.white))),
-        ],
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: AppBar(
+          backgroundColor: Colors.black.withOpacity(0.8),
+
+         actions: [
+            Spacer(),
+            BuildNavButton(title: 'Home', key2: homeKey),
+            Spacer(),
+            BuildNavButton(title: 'About', key2: aboutKey),
+            Spacer(),
+            BuildNavButton(title: 'Certificates', key2: certificateKey),
+            Spacer(),
+            BuildNavButton(title: 'Education', key2: educationKey),
+            Spacer(),
+            BuildNavButton(title: 'Skills', key2: skillsKey),
+            Spacer(),
+            BuildNavButton(title: 'Projects', key2: projectKey),
+            Spacer(),
+          ],
+        ),
       ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
@@ -109,8 +106,6 @@ class _MobileLayoutState extends State<MobileLayout>
                 controller: _scrollController,
                 child: Column(
                   children: [
-                    // Home Section
-
                     Container(
                       key: homeKey,
                       margin: EdgeInsets.symmetric(vertical: size.height * 0.2),
@@ -142,20 +137,16 @@ class _MobileLayoutState extends State<MobileLayout>
                       ),
                     ),
 
-                    // Certificate Widget
                     Container(
                       key: certificateKey,
                       margin: EdgeInsets.all(15),
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: CertificateWidget(size: size, itemCt: 3),
                     ),
 
-                    // Education Tab
                     Container(
                       key: educationKey,
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: SizedBox(
                         height: size.height * 0.75,
                         child: EducationTab(
@@ -165,21 +156,17 @@ class _MobileLayoutState extends State<MobileLayout>
                       ),
                     ),
 
-                    // Skills Widget
                     Container(
                       key: skillsKey,
                       margin: EdgeInsets.all(15),
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.04),
+                      padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                       child: SkillsWidget(size: size, itemct: 2),
                     ),
 
-                    // Project Widget
                     Container(
                       key: projectKey,
                       margin: EdgeInsets.all(15),
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.04),
+                      padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                       child: ProjectWidget(size: size, itemct: 1),
                     ),
 

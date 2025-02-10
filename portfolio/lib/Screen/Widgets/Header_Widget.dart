@@ -26,11 +26,11 @@ class BuildNavButton extends StatelessWidget {
 
     // Responsive font size based on screen width
     double fontSize = screenWidth * 0.02; // 2.5% of screen width
-    fontSize = fontSize.clamp(14, 22); // Restrict between 14px (smallest) and 22px (largest)
+    fontSize = fontSize.clamp(10, 22); // Restrict between 14px (smallest) and 22px (largest)
 
     // Responsive padding
     double horizontalPadding = screenWidth * 0.02; // 4% of screen width
-    double verticalPadding = screenWidth * 0.015; // 1.5% of screen width
+    double verticalPadding = screenWidth * 0.015; // 1.5% of screen widthr
 
     // Responsive border radius
     double borderRadius = screenWidth * 0.03; // 3% of screen width
