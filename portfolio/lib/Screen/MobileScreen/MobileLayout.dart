@@ -1,9 +1,12 @@
+import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/Screen/Widgets/Count_Container_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Download_CV.dart';
 import 'package:portfolio/Screen/Widgets/Education_Widget.dart';
+import 'package:portfolio/Screen/Widgets/Footer_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
 import 'package:portfolio/Screen/Widgets/About_Widget.dart';
+import 'package:portfolio/Screen/Widgets/Header_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Project_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Rotating_image_widget.dart';
 import 'package:portfolio/Screen/Widgets/Skills_Widget.dart';
@@ -11,6 +14,7 @@ import 'package:portfolio/Screen/Widgets/Certificate_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Social_widget.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/styles.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class MobileLayout extends StatefulWidget {
   const MobileLayout({super.key});
@@ -19,116 +23,172 @@ class MobileLayout extends StatefulWidget {
   State<MobileLayout> createState() => _MobileLayoutState();
 }
 
-class _MobileLayoutState extends State<MobileLayout> {
-  // Declare ScrollController
-  ScrollController _scrollController = ScrollController();
+class _MobileLayoutState extends State<MobileLayout>
+    with TickerProviderStateMixin {
+  bool isAboutVisible = false;
+  final ScrollController _scrollController = ScrollController();
+
+  final GlobalKey homeKey = GlobalKey();
+  final GlobalKey aboutKey = GlobalKey();
+  final GlobalKey certificateKey = GlobalKey();
+  final GlobalKey educationKey = GlobalKey();
+  final GlobalKey skillsKey = GlobalKey();
+  final GlobalKey projectKey = GlobalKey();
+
+  late Image particleImage;
+
+  @override
+  void initState() {
+    super.initState();
+    particleImage = Image.asset("assets/images/Shape.png");
+  }
+
+  void scrollToSection(GlobalKey key) {
+    Scrollable.ensureVisible(
+      key.currentContext!,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    // Mobile layout adjustments
-    double paddingFactor =
-        size.width * 0.05; // Adjusting padding for mobile screens
-
     return Scaffold(
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: Styles.gradientDecorations,
-        child: SingleChildScrollView(
-          controller: _scrollController, // Assign the ScrollController
-          child: Container(
-            margin: EdgeInsets.symmetric(
-                vertical:
-                    size.height * 0.12), // Reduced vertical margin for mobile
-            child: Column(
-              children: [
-                // Rotating Image Container
-                Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [RotatingImageContainer()],
-                  ),
+      appBar: AppBar(
+        title: Text('My Portfolio'),
+        backgroundColor: Colors.black.withOpacity(0.8),
+        actions: [
+          TextButton(
+              onPressed: () => scrollToSection(homeKey),
+              child: Text("Home", style: TextStyle(color: Colors.white))),
+          TextButton(
+              onPressed: () => scrollToSection(aboutKey),
+              child: Text("About", style: TextStyle(color: Colors.white))),
+          TextButton(
+              onPressed: () => scrollToSection(certificateKey),
+              child:
+                  Text("Certificates", style: TextStyle(color: Colors.white))),
+          TextButton(
+              onPressed: () => scrollToSection(educationKey),
+              child: Text("Education", style: TextStyle(color: Colors.white))),
+          TextButton(
+              onPressed: () => scrollToSection(skillsKey),
+              child: Text("Skills", style: TextStyle(color: Colors.white))),
+          TextButton(
+              onPressed: () => scrollToSection(projectKey),
+              child: Text("Projects", style: TextStyle(color: Colors.white))),
+        ],
+      ),
+      body: NotificationListener<ScrollNotification>(
+        onNotification: (ScrollNotification notification) {
+          if (notification is ScrollUpdateNotification) {
+            final position = _scrollController.position.pixels;
+            final shouldBeVisible = position > size.height * 0.5;
+            if (shouldBeVisible != isAboutVisible) {
+              setState(() {
+                isAboutVisible = shouldBeVisible;
+              });
+            }
+          }
+          return true;
+        },
+        child: ResponsiveBuilder(
+          builder: (context, sizingInformation) {
+            return AnimatedBackground(
+              behaviour: RandomParticleBehaviour(
+                options: ParticleOptions(
+                  spawnMaxRadius: 90,
+                  particleCount: 20,
+                  image: particleImage,
                 ),
-                SizedBox(
-                  height: size.width * 0.06, // Adjusted space after image
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              vsync: this,
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: Column(
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            HeaderTextWidget(
-                              size: size,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Social_Tab(size: size)
-                      ],
+                    // Home Section
+
+                    Container(
+                      key: homeKey,
+                      margin: EdgeInsets.symmetric(vertical: size.height * 0.2),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            children: [RotatingImageContainer()],
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              HeaderTextWidget(size: size),
+                              SizedBox(height: 20),
+                              Social_large(size: size),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: size.width * 0.06, // Adjusted space between sections
-                ),
-                // Count Widget
 
-                SizedBox(
-                  height:
-                      size.width * 0.06, // Adjusted space after count widgets
-                ),
-                AboutWidget(size: size, scrollController: _scrollController),
+                    Container(
+                      key: aboutKey,
+                      child: AboutWidget(
+                        size: size,
+                        scrollController: _scrollController,
+                      ),
+                    ),
 
-                // Certificate Widget
-                Container(
-                      color: Colors.transparent,
+                    // Certificate Widget
+                    Container(
+                      key: certificateKey,
                       margin: EdgeInsets.all(15),
                       padding:
                           EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: CertificateWidget(size: size, itemCt: 3),
                     ),
-                // Education Tab
-                Container(
-                  color: Colors.transparent,
-                  padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
-                  child: SizedBox(
-                    height: 400, // Adjusted height for mobile view
-                    child: EducationTab(
-                        size: size, scrollController: _scrollController),
-                  ),
-                ),
-                // Skills Widget
-                Container(
-                  color: Colors.transparent,
-                  padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
-                  child: SizedBox(
-                      height: 500, child: SkillsWidget(size: size, itemct: 2)),
-                ),
-                // Project Widget
-                Container(
-                  color: Colors.transparent,
-                  padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
-                  child: SizedBox(
-                    height: size.height,
-                    child: ProjectWidget(
-                      size: size,
-                      itemct: 1, // Adjusted for mobile
+
+                    // Education Tab
+                    Container(
+                      key: educationKey,
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      child: SizedBox(
+                        height: size.height * 0.75,
+                        child: EducationTab(
+                          size: size,
+                          scrollController: _scrollController,
+                        ),
+                      ),
                     ),
-                  ),
+
+                    // Skills Widget
+                    Container(
+                      key: skillsKey,
+                      margin: EdgeInsets.all(15),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.04),
+                      child: SkillsWidget(size: size, itemct: 2),
+                    ),
+
+                    // Project Widget
+                    Container(
+                      key: projectKey,
+                      margin: EdgeInsets.all(15),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.04),
+                      child: ProjectWidget(size: size, itemct: 1),
+                    ),
+
+                    FooterWidget(size: size),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -136,35 +196,7 @@ class _MobileLayoutState extends State<MobileLayout> {
 
   @override
   void dispose() {
-    // Always dispose the ScrollController
     _scrollController.dispose();
     super.dispose();
-  }
-}
-
-class Social_Tab extends StatelessWidget {
-  const Social_Tab({
-    super.key,
-    required this.size,
-  });
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: size.width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          DownloadCVButton(),
-          SizedBox(
-            height: 20,
-          ),
-          SocialWidget(),
-        ],
-      ),
-    );
   }
 }

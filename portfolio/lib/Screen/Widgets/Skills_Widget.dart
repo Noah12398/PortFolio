@@ -21,7 +21,7 @@ class SkillsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView( // Make sure to wrap in SingleChildScrollView for scrolling
+    return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(100.0),
         child: Column(

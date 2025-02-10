@@ -103,6 +103,7 @@ class Social_large extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DownloadCVButton(),
           SizedBox(
