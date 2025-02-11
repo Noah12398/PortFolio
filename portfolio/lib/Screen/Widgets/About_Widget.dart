@@ -156,7 +156,7 @@ class _AboutWidgetState extends State<AboutWidget> with TickerProviderStateMixin
                   'From mobile apps to engaging games, my projects reflect creativity and technical skills. '
                   'I’m always eager to learn and contribute to impactful projects. Let’s connect and innovate together!',
                   style: TextStyle(
-                    fontSize: widget.size.width * 0.017,
+                  fontSize: widget.size.width * 0.02,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     color: Colors.black.withOpacity(0.75),

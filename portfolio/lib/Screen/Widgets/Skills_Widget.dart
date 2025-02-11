@@ -23,7 +23,7 @@ class SkillsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(100.0),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
         child: Column(
           children: [
             GradientText(
@@ -39,8 +39,10 @@ class SkillsWidget extends StatelessWidget {
             ),
             SizedBox(height: 10), // Add spacing between title and grid
             GridView.builder(
-              shrinkWrap: true, // Allow GridView to take only the space it needs
-              physics: NeverScrollableScrollPhysics(), // Disable scrolling for GridView
+              shrinkWrap:
+                  true, // Allow GridView to take only the space it needs
+              physics:
+                  NeverScrollableScrollPhysics(), // Disable scrolling for GridView
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: itemct,
                 crossAxisSpacing: size.width * 0.05,
