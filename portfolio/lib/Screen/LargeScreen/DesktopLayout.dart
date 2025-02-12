@@ -141,11 +141,9 @@ class _DesktopLayoutState extends State<DesktopLayout>
                       color: Colors.transparent,
                       padding:
                           EdgeInsets.symmetric(vertical: size.width * 0.05),
-                      child: SizedBox(
-                        height: size.height,
                         child: EducationTab(
                             size: size, scrollController: _scrollController),
-                      ),
+                      
                     ),
                     
                     Container(

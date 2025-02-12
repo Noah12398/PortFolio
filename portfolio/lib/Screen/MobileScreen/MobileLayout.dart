@@ -105,6 +105,8 @@ class _MobileLayoutState extends State<MobileLayout>
               child: SingleChildScrollView(
                 controller: _scrollController,
                 child: Column(
+                    mainAxisSize: MainAxisSize.min, // Prevents infinite layout expansion
+
                   children: [
                     Container(
                       key: homeKey,
@@ -147,13 +149,10 @@ class _MobileLayoutState extends State<MobileLayout>
                     Container(
                       key: educationKey,
                       padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
-                      child: SizedBox(
-                        height: size.height * 0.75,
                         child: EducationTab(
                           size: size,
                           scrollController: _scrollController,
                         ),
-                      ),
                     ),
 
                     Container(

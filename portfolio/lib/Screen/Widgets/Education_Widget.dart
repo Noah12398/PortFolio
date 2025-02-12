@@ -90,9 +90,9 @@ class _EducationTabState extends State<EducationTab>
         final isWidgetVisible = widgetPosition + renderBox.size.height > 0 &&
             widgetPosition < viewportHeight;
 
-       // print('Widget Position: $widgetPosition');
-       // print('Viewport Height: $viewportHeight');
-       // print('Is Widget Visible: $isWidgetVisible');
+        // print('Widget Position: $widgetPosition');
+        // print('Viewport Height: $viewportHeight');
+        // print('Is Widget Visible: $isWidgetVisible');
 
         // If widget becomes invisible while scrolling down, force slide up
         if (!isWidgetVisible && isScrollingDown) {
@@ -172,8 +172,9 @@ class _EducationTabState extends State<EducationTab>
           style: TextStyle(
               fontSize: widget.size.width * 0.04, fontWeight: FontWeight.bold),
         ),
-        Expanded(
-          child: ListView.builder(
+           ListView.builder(
+             shrinkWrap: true, // Prevents it from taking extra space
+          physics: const NeverScrollableScrollPhysics(), // Disables scrolling
             itemCount: educationList.length, // Use the length of the data list
             itemBuilder: (context, index) {
               final education = educationList[index]; // Get the current item
@@ -238,7 +239,10 @@ class _EducationTabState extends State<EducationTab>
                                               education['details']!,
                                               style: TextStyle(
                                                 color: Colors.black54,
-      fontSize: MediaQuery.of(context).size.width * 0.02, // Responsive font size
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.02, // Responsive font size
                                                 fontStyle: FontStyle.italic,
                                               ),
                                               textAlign: TextAlign.center,
@@ -261,7 +265,7 @@ class _EducationTabState extends State<EducationTab>
               );
             },
           ),
-        ),
+        
       ],
     );
   }
