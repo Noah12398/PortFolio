@@ -50,12 +50,12 @@ class _ProjectWidgetState extends State<ProjectWidget> {
     },
   ];
 
-  List<bool> _isHovered = [];
+  List<bool> _isTapped = [];
 
   @override
   void initState() {
     super.initState();
-    _isHovered = List.filled(projectList.length, false);
+    _isTapped = List.filled(projectList.length, false);
   }
 
   @override
@@ -90,9 +90,12 @@ class _ProjectWidgetState extends State<ProjectWidget> {
             ),
             itemCount: projectList.length,
             itemBuilder: (context, index) {
-              return MouseRegion(
-                onEnter: (_) => setState(() => _isHovered[index] = true),
-                onExit: (_) => setState(() => _isHovered[index] = false),
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isTapped[index] = !_isTapped[index]; // Toggle tapped state
+                  });
+                },
                 child: Stack(
                   children: [
                     Card(
@@ -104,8 +107,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           AspectRatio(
-                            aspectRatio:
-                                2.25, // Set the aspect ratio, 1.5 is just an example
+                            aspectRatio: 2.25, // Aspect ratio of the card
                             child: ClipRRect(
                               borderRadius: BorderRadius.vertical(
                                   top: Radius.circular(12)),
@@ -131,7 +133,7 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                         ],
                       ),
                     ),
-                    if (_isHovered[index])
+                    if (_isTapped[index]) // Show overlay on tap
                       Positioned.fill(
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),

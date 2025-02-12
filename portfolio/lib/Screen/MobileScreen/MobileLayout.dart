@@ -56,26 +56,26 @@ class _MobileLayoutState extends State<MobileLayout>
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80),
-        child: AppBar(
-          backgroundColor: Colors.black.withOpacity(0.8),
-
-         actions: [
-            Spacer(),
-            BuildNavButton(title: 'Home', key2: homeKey),
-            Spacer(),
-            BuildNavButton(title: 'About', key2: aboutKey),
-            Spacer(),
-            BuildNavButton(title: 'Certificates', key2: certificateKey),
-            Spacer(),
-            BuildNavButton(title: 'Education', key2: educationKey),
-            Spacer(),
-            BuildNavButton(title: 'Skills', key2: skillsKey),
-            Spacer(),
-            BuildNavButton(title: 'Projects', key2: projectKey),
-            Spacer(),
-          ],
+      appBar: AppBar(
+        toolbarHeight: 80,
+        backgroundColor: Colors.black.withOpacity(0.8),
+        title: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              BuildNavButton(title: 'Home', key2: homeKey),
+              SizedBox(width: 16),
+              BuildNavButton(title: 'About', key2: aboutKey),
+              SizedBox(width: 16),
+              BuildNavButton(title: 'Certificates', key2: certificateKey),
+              SizedBox(width: 16),
+              BuildNavButton(title: 'Education', key2: educationKey),
+              SizedBox(width: 16),
+              BuildNavButton(title: 'Skills', key2: skillsKey),
+              SizedBox(width: 16),
+              BuildNavButton(title: 'Projects', key2: projectKey),
+            ],
+          ),
         ),
       ),
       body: NotificationListener<ScrollNotification>(

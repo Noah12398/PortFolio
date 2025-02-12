@@ -131,16 +131,11 @@ class _DesktopLayoutState extends State<DesktopLayout>
                     ),
                     Container(
                       key: certificateKey,
-                      color: Colors.transparent,
                       margin: EdgeInsets.all(15),
-                      padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.05),
-                      child: SizedBox(
-                        height: size.height,
-                        child: CertificateWidget(
-                            size: size, itemCt: 3), // Corrected to itemCt
-                      ),
+                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      child: CertificateWidget(size: size, itemCt: 3),
                     ),
+                    
                     Container(
                       key: educationKey,
                       color: Colors.transparent,

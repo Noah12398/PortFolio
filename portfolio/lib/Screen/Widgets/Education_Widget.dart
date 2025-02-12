@@ -238,7 +238,7 @@ class _EducationTabState extends State<EducationTab>
                                               education['details']!,
                                               style: TextStyle(
                                                 color: Colors.black54,
-                                                fontSize: 16,
+      fontSize: MediaQuery.of(context).size.width * 0.02, // Responsive font size
                                                 fontStyle: FontStyle.italic,
                                               ),
                                               textAlign: TextAlign.center,
