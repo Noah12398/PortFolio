@@ -134,10 +134,14 @@ class _ProjectWidgetState extends State<ProjectWidget> {
                       ),
                     ),
                     if (_isTapped[index]) // Show overlay on tap
-                      Positioned.fill(
+                      Align(
+                        alignment: Alignment.topCenter,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Container(
+                            width: double.infinity, // set a specific width
+                            height: MediaQuery.of(context).size.width /
+                                2.25, // Adjust height based on aspect ratio
                             color: Colors.black.withOpacity(0.6),
                             child: Center(
                               child: Wrap(

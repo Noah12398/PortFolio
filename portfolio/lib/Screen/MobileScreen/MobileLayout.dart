@@ -7,6 +7,7 @@ import 'package:portfolio/Screen/Widgets/Footer_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Text_Widget.dart';
 import 'package:portfolio/Screen/Widgets/About_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Header_Widget.dart';
+import 'package:portfolio/Screen/Widgets/PortfolioSidePanel.dart';
 import 'package:portfolio/Screen/Widgets/Project_Widget.dart';
 import 'package:portfolio/Screen/Widgets/Rotating_image_widget.dart';
 import 'package:portfolio/Screen/Widgets/Skills_Widget.dart';
@@ -23,8 +24,7 @@ class MobileLayout extends StatefulWidget {
   State<MobileLayout> createState() => _MobileLayoutState();
 }
 
-class _MobileLayoutState extends State<MobileLayout>
-    with TickerProviderStateMixin {
+class _MobileLayoutState extends State<MobileLayout> with TickerProviderStateMixin {
   bool isAboutVisible = false;
   final ScrollController _scrollController = ScrollController();
 
@@ -59,24 +59,15 @@ class _MobileLayoutState extends State<MobileLayout>
       appBar: AppBar(
         toolbarHeight: 80,
         backgroundColor: Colors.black.withOpacity(0.8),
-        title: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              BuildNavButton(title: 'Home', key2: homeKey),
-              SizedBox(width: 16),
-              BuildNavButton(title: 'About', key2: aboutKey),
-              SizedBox(width: 16),
-              BuildNavButton(title: 'Certificates', key2: certificateKey),
-              SizedBox(width: 16),
-              BuildNavButton(title: 'Education', key2: educationKey),
-              SizedBox(width: 16),
-              BuildNavButton(title: 'Skills', key2: skillsKey),
-              SizedBox(width: 16),
-              BuildNavButton(title: 'Projects', key2: projectKey),
-            ],
-          ),
-        ),
+      ),
+      drawer: PortfolioSidePanel(
+        homeKey: homeKey,
+        aboutKey: aboutKey,
+        certificateKey: certificateKey,
+        educationKey: educationKey,
+        skillsKey: skillsKey,
+        projectKey: projectKey,
+        scrollToSection: scrollToSection,  // Pass the scroll function
       ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
@@ -105,8 +96,7 @@ class _MobileLayoutState extends State<MobileLayout>
               child: SingleChildScrollView(
                 controller: _scrollController,
                 child: Column(
-                    mainAxisSize: MainAxisSize.min, // Prevents infinite layout expansion
-
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
                       key: homeKey,
@@ -116,59 +106,40 @@ class _MobileLayoutState extends State<MobileLayout>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Column(
-                            children: [RotatingImageContainer()],
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              HeaderTextWidget(size: size),
-                              SizedBox(height: 20),
-                              Social_large(size: size),
-                            ],
-                          ),
+                          RotatingImageContainer(),
+                          HeaderTextWidget(size: size),
+                          SizedBox(height: 20),
+                          Social_large(size: size),
                         ],
                       ),
                     ),
-
                     Container(
                       key: aboutKey,
-                      child: AboutWidget(
-                        size: size,
-                        scrollController: _scrollController,
-                      ),
+                      child: AboutWidget(size: size, scrollController: _scrollController),
                     ),
-
                     Container(
                       key: certificateKey,
                       margin: EdgeInsets.all(15),
                       padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: CertificateWidget(size: size, itemCt: 3),
                     ),
-
                     Container(
                       key: educationKey,
                       padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
-                        child: EducationTab(
-                          size: size,
-                          scrollController: _scrollController,
-                        ),
+                      child: EducationTab(size: size, scrollController: _scrollController),
                     ),
-
                     Container(
                       key: skillsKey,
                       margin: EdgeInsets.all(15),
                       padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                       child: SkillsWidget(size: size, itemct: 2),
                     ),
-
                     Container(
                       key: projectKey,
                       margin: EdgeInsets.all(15),
                       padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
                       child: ProjectWidget(size: size, itemct: 1),
                     ),
-
                     FooterWidget(size: size),
                   ],
                 ),
