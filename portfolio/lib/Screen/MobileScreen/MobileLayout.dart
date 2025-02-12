@@ -24,7 +24,8 @@ class MobileLayout extends StatefulWidget {
   State<MobileLayout> createState() => _MobileLayoutState();
 }
 
-class _MobileLayoutState extends State<MobileLayout> with TickerProviderStateMixin {
+class _MobileLayoutState extends State<MobileLayout>
+    with TickerProviderStateMixin {
   bool isAboutVisible = false;
   final ScrollController _scrollController = ScrollController();
 
@@ -59,15 +60,21 @@ class _MobileLayoutState extends State<MobileLayout> with TickerProviderStateMix
       appBar: AppBar(
         toolbarHeight: 80,
         backgroundColor: Colors.black.withOpacity(0.8),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
       ),
-      drawer: PortfolioSidePanel(
-        homeKey: homeKey,
-        aboutKey: aboutKey,
-        certificateKey: certificateKey,
-        educationKey: educationKey,
-        skillsKey: skillsKey,
-        projectKey: projectKey,
-        scrollToSection: scrollToSection,  // Pass the scroll function
+      drawer: SizedBox(
+        width: size.width*0.6,
+        child: PortfolioSidePanel(
+          homeKey: homeKey,
+          aboutKey: aboutKey,
+          certificateKey: certificateKey,
+          educationKey: educationKey,
+          skillsKey: skillsKey,
+          projectKey: projectKey,
+          scrollToSection: scrollToSection, // Pass the scroll function
+        ),
       ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification notification) {
@@ -115,29 +122,35 @@ class _MobileLayoutState extends State<MobileLayout> with TickerProviderStateMix
                     ),
                     Container(
                       key: aboutKey,
-                      child: AboutWidget(size: size, scrollController: _scrollController),
+                      child: AboutWidget(
+                          size: size, scrollController: _scrollController),
                     ),
                     Container(
                       key: certificateKey,
                       margin: EdgeInsets.all(15),
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
                       child: CertificateWidget(size: size, itemCt: 3),
                     ),
                     Container(
                       key: educationKey,
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.05),
-                      child: EducationTab(size: size, scrollController: _scrollController),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.05),
+                      child: EducationTab(
+                          size: size, scrollController: _scrollController),
                     ),
                     Container(
                       key: skillsKey,
                       margin: EdgeInsets.all(15),
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.04),
                       child: SkillsWidget(size: size, itemct: 2),
                     ),
                     Container(
                       key: projectKey,
                       margin: EdgeInsets.all(15),
-                      padding: EdgeInsets.symmetric(vertical: size.width * 0.04),
+                      padding:
+                          EdgeInsets.symmetric(vertical: size.width * 0.04),
                       child: ProjectWidget(size: size, itemct: 1),
                     ),
                     FooterWidget(size: size),
