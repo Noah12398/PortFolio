@@ -7,14 +7,23 @@ class SocialWidget extends StatelessWidget {
   const SocialWidget({super.key});
 
   // Function to launch URLs
-  Future<void> _launchUrl(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } else {
+Future<void> _launchUrl(String url) async {
+  final Uri uri = Uri.parse(url);
+
+  if (await canLaunchUrl(uri)) {
+    bool launched = await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication, // Forces opening in a browser
+    );
+
+    if (!launched) {
       throw 'Could not launch $url';
     }
+  } else {
+    throw 'Could not launch $url';
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
