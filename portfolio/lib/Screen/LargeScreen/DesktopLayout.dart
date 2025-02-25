@@ -13,6 +13,8 @@ import 'package:portfolio/constants/styles.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:animated_background/animated_background.dart';
 
+import '../Widgets/Certificate_Widget.dart';
+
 class DesktopLayout extends StatefulWidget {
   const DesktopLayout({super.key});
 
